@@ -1,0 +1,17 @@
+Future updates.
+1. (needs to be checked) Implement storage limit to gathering/inventory
+2. Give home a power source and the ability to store power.
+3. Add home appliances such as lights and a heater.
+4. Save function
+5. Health
+6. Change (lake1_cords) to (cords) in loop1
+7. Turn (tips) into a help page.
+8. Free_loot, used to add 10 of each item. Use when on menu selection.
+9. Quests
+10. A shop to buy
+
+Tips menu option. (Player chooses question and terminal replies) -- Add these --
+1. What does each item do?
+2. What are some cheat codes?
+3. What are each location used for?
+4. What are the numbers in the cordinates for?
