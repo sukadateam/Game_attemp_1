@@ -34,11 +34,14 @@ def loop1(lake1_cords,moving_to):
   if stanima1+1>stanima:
     print 'You need to sleep. You are too tired to keep moving.'
   move_on=raw_input('Hit enter to exit change location:')
-def loop2(choice):
+def loop2():
+  global sides,choice
   if '(' in choice:
     choice = choice.replace('(','')
+    sides=True
   if ')' in choice:
     choice = choice.replace(')','')
+    sides=True
 def loop3():
   #Use clear() before entering
   global storage_wood,wood,storage_water,water
@@ -385,7 +388,7 @@ def loop3():
                 print 'You need to enter a number.'
           move_on=raw_input('Hit enter to exit crafting:')
           choice=''
-def loop4(s,numbers):
+def loop4(s,other,numbers):
   #s = (True)Shows other stuff and stats
   global dirt,wood,rocks,water,clay,bowl,sticks
   global self_storage,home_storage,stanima,max_stanima
@@ -395,7 +398,7 @@ def loop4(s,numbers):
   side1=1
   self_int=0
   self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-  self_int+=pickaxe+axe+shovel+daimond+coal+iron+gold
+  self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
   print 'Minerals:'
   if numbers==True:
     side2=side[:3]+str(side1)+side[3:]
@@ -430,6 +433,19 @@ def loop4(s,numbers):
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print side2+'Axes:',axe,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print 'Goodies:'
+    print side2+'Coal:',coal,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Iron:',iron,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Gold:',gold,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Diamonds:',diamond,'(Qty)'
   if numbers==False:
     print '  Wood:',wood,'(logs)'
     print '  Dirt:',dirt,'(lbs)'
@@ -443,6 +459,12 @@ def loop4(s,numbers):
     print '  Pickaxes:',pickaxe,'(Qty)'
     print '  Shovels:',shovel,'(Qty)'
     print '  Axes:',axe,'(Qty)'
+  if other==True:
+    print 'Goodies:'
+    print '  Coal:',coal,'(Qty)'
+    print '  Iron:',iron,'(Qty)'
+    print '  Gold:',gold,'(Qty)'
+    print '  Diamonds:',diamond,'(Qty)'
   if s==True:
     print 'Storage:'
     print '  Inventory Storage:',self_storage,'(qty of items)'
@@ -474,10 +496,12 @@ while p==True:
   print '(5)Sleep'
   print '(6)Tips'
   print '(7)Exersice'
-  print '(8)Sell (*)'
-  print '(9)Mining (*)'
+  print '(8)Sell'
+  print '(9)Mining'
   print '(*)Show inventory'
   print '(bye)Exit'
+  if dev==True:
+    print '\nDev_menu()\n'
   print '\nTo get help type (help)'
   choice=raw_input('Choose an option or enter code:')
   if choice==dev_options:
@@ -492,26 +516,29 @@ while p==True:
         dev=False
     time.sleep(1)
   clear()
-  loop2(choice)
+  loop2()
   if choice == "1":
     self_int=0
     self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-    self_int+=pickaxe+axe+shovel+daimond+coal+iron+gold
+    self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
     #Water + Dirt = Clay
     #Wood = house, water holder, storage
     print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks'
     choice=raw_input('What would you like to gather:')
-    loop2(choice)
+    loop2()
     if choice == "1":
       if self_storage<self_int+3:
         print 'Your inventory is full.'
         choice='blah'
       if choice == "1":
-        print 'Gathering wood...'
-        time.sleep(3)
-        wood+=3
-        print 'Gathered wood'
-        time.sleep(1)
+        if axe>0:
+          print 'Gathering wood...'
+          time.sleep(3)
+          wood+=3
+          print 'Gathered wood'
+          time.sleep(1)
+        if axe<1:
+          print 'You need more axe(s)'
     if choice == "2":
       if current_surrounding not in water_biomes:
         print 'You need to be near a lake or a river to gather water.'
@@ -529,11 +556,14 @@ while p==True:
         if self_storage<self_int+2:
           choice='blah'
         if choice == "3":
-          print 'Gathering dirt...'
-          time.sleep(3)
-          dirt+=2
-          print 'Gathered dirt'
-          time.sleep(1)
+          if shovel>0:
+            print 'Gathering dirt...'
+            time.sleep(3)
+            dirt+=2
+            print 'Gathered dirt'
+            time.sleep(1)
+          if shovel<1:
+            print 'You need more shovel(s)'
       if current_surrounding not in dirt_biomes:
         print 'You must be in the forest to gather dirt.'
     if choice == "4":
@@ -747,17 +777,17 @@ while p==True:
       print 'Stanima increased by 15'
       max_stanima+=15
       print 'Recommended to go to sleep.'
-    if current_surronding is not "exercise mountian #1":
+    if current_surrounding is not "exercise mountian #1":
       print 'You need to travel to exersice mountian to use this function.'
     move_on=raw_input('Hit enter to exit exercise:')
   if choice == "8":
-    if dev==True:
-      clear()
-      loop4(s=False,numbers=True)
-      choice=raw_input('What would you like to sell:')
-      if choice=="1":
-        if wood>0:
-          choice=raw_input('How many:')
+    clear()
+    loop4(s=False,other=False,numbers=True)
+    choice=raw_input('What would you like to sell:')
+    if choice=="1":
+      if wood>0:
+        choice=raw_input('How many:')
+        if wood==int(choice) or wood>int(choice):
           try:
             money+=int(choice)*price_wood
             wood-=int(choice)
@@ -766,11 +796,12 @@ while p==True:
             print 'Wood:',wood
           except ValueError:
             print 'You need to enter a number.'
-        if wood<1:
-          print 'You don\'t have any to sell'
-      if choice=="2":
-        if dirt>0:
-          choice=raw_input('How many:')
+      if wood<1:
+        print 'You don\'t have any to sell'
+    if choice=="2":
+      if dirt>0:
+        choice=raw_input('How many:')
+        if dirt==int(choice) or dirt>int(choice):
           try:
             money+=int(choice)*price_dirt
             dirt-=int(choice)
@@ -779,11 +810,12 @@ while p==True:
             print 'Dirt:',dirt
           except ValueError:
             print 'You need to enter a number.'
-        if dirt<1:
-          print 'You don\'t have any to sell'
-      if choice=="3":
-        if water>0:
-          choice=raw_input('How many:')
+      if dirt<1:
+        print 'You don\'t have any to sell'
+    if choice=="3":
+      if water>0:
+        choice=raw_input('How many:')
+        if water==int(choice) or water>int(choice):
           try:
             money+=int(choice)*price_water
             water-=int(choice)
@@ -792,11 +824,12 @@ while p==True:
             print 'Water:',water
           except ValueError:
             print 'You need to enter a number.'
-        if water<1:
-          print 'You don\'t have any to sell'
-      if choice=="4":
-        if rocks>0:
-          choice=raw_input('How many:')
+      if water<1:
+        print 'You don\'t have any to sell'
+    if choice=="4":
+      if rocks>0:
+        choice=raw_input('How many:')
+        if rocks==int(choice) or rocks>int(choice):
           try:
             money+=int(choice)*price_rocks
             rocks-=int(choice)
@@ -805,11 +838,12 @@ while p==True:
             print 'Rock(s):',rocks
           except ValueError:
             print 'You need to enter a number.'
-        if rocks<1:
-          print 'You don\'t have any to sell'
-      if choice=="5":
-        if clay>0:
-          choice=raw_input('How many:')
+      if rocks<1:
+        print 'You don\'t have any to sell'
+    if choice=="5":
+      if clay>0:
+        choice=raw_input('How many:')
+        if clay==int(choice) or clay>int(choice):
           try:
             money+=int(choice)*price_clay
             clay-=int(choice)
@@ -818,11 +852,12 @@ while p==True:
             print 'Clay:',clay
           except ValueError:
             print 'You need to enter a number.'
-        if clay<1:
-          print 'You don\'t have any to sell'
-      if choice=="6":
-        if bowls>0:
-          choice=raw_input('How many:')
+      if clay<1:
+        print 'You don\'t have any to sell'
+    if choice=="6":
+      if bowls>0:
+        choice=raw_input('How many:')
+        if bowls==int(choice) or bowls>int(choice):
           try:
             money+=int(choice)*price_bowls
             bowls-=int(choice)
@@ -831,11 +866,12 @@ while p==True:
             print 'Bowl(s):',bowls
           except ValueError:
             print 'You need to enter a number.'
-        if bowls<1:
-          print 'You don\'t have any to sell'
-      if choice=="7":
-        if sticks>0:
-          choice=raw_input('How many:')
+      if bowls<1:
+        print 'You don\'t have any to sell'
+    if choice=="7":
+      if sticks>0:
+        choice=raw_input('How many:')
+        if sticks==int(choice) or sticks>int(choice):
           try:
             money+=int(choice)*price_sticks
             sticks-=int(choice)
@@ -844,11 +880,12 @@ while p==True:
             print 'Stick(s):',sticks
           except ValueError:
             print 'You need to enter a number.'
-        if sticks<1:
-          print 'You don\'t have any to sell'
-      if choice=="8":
-        if pickaxe>0:
-          choice=raw_input('How many:')
+      if sticks<1:
+        print 'You don\'t have any to sell'
+    if choice=="8":
+      if pickaxe>0:
+        choice=raw_input('How many:')
+        if pickaxe==int(choice) or pickaxe>int(choice):
           try:
             money+=int(choice)*price_pickaxe
             pickaxe-=int(choice)
@@ -857,11 +894,12 @@ while p==True:
             print 'Pickaxe(s):',pickaxe
           except ValueError:
             print 'You need to enter a number.'
-        if pickaxe<1:
-          print 'You don\'t have any to sell'
-      if choice=="9":
-        if shovel>0:
-          choice=raw_input('How many:')
+      if pickaxe<1:
+        print 'You don\'t have any to sell'
+    if choice=="9":
+      if shovel>0:
+        choice=raw_input('How many:')
+        if shovel==int(choice) or shovel>int(choice):
           try:
             money+=int(choice)*price_shovel
             shovel-=int(choice)
@@ -870,11 +908,12 @@ while p==True:
             print 'Shovel(s):',shovel
           except ValueError:
             print 'You need to enter a number.'
-        if shovel<1:
-          print 'You don\'t have any to sell'
-      if choice=="10":
-        if axe>0:
-          choice=raw_input('How many:')
+      if shovel<1:
+        print 'You don\'t have any to sell'
+    if choice=="10":
+      if axe>0:
+        choice=raw_input('How many:')
+        if axe==int(choice) or axe>int(choice):
           try:
             money+=int(choice)*price_axe
             axe-=int(choice)
@@ -883,16 +922,74 @@ while p==True:
             print 'Axe(s):',axe
           except ValueError:
             print 'You need to enter a number.'
-        if axe<1:
-          print 'You don\'t have any to sell'
-    if dev==False:
-      dev_promt()
+      if axe<1:
+        print 'You don\'t have any to sell'
+    if choice=="11":
+      if coal>0:
+        choice=raw_input('How many:')
+        if coal==int(choice) or coal>int(choice):
+          try:
+            money+=int(choice)*price_coal
+            coal-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Coal:',coal
+          except ValueError:
+            print 'You need to enter a number.'
+      if coal<1:
+        print 'You don\'t have any to sell'
+    if choice=="12":
+      if iron>0:
+        choice=raw_input('How many:')
+        if iron==int(choice) or iron>int(choice):
+          try:
+            money+=int(choice)*price_iron
+            iron-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Iron:',iron
+          except ValueError:
+            print 'You need to enter a number.'
+      if iron<1:
+        print 'You don\'t have any to sell'
+    if choice=="13":
+      if gold>0:
+        choice=raw_input('How many:')
+        if gold==int(choice) or gold>int(choice):
+          try:
+            money+=int(choice)*price_gold
+            gold-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Gold:',gold
+          except ValueError:
+            print 'You need to enter a number.'
+      if gold<1:
+        print 'You don\'t have any to sell'
+    if choice=="14":
+      if diamond>0:
+        choice=raw_input('How many:')
+        if diamond==int(choice) or diamond>int(choice):
+          try:
+            money+=int(choice)*price_diamond
+            diamond-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Diamond:',diamond
+          except ValueError:
+            print 'You need to enter a number.'
+      if diamond<1:
+        print 'You don\'t have any to sell'
     choice=''
     move_on=raw_input('Hit enter to exit sell:')
   if choice == "9":
-    if dev==True:
-      self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-      self_int+=pickaxe+axe+shovel+daimond+coal+iron+gold
+    self_int=0
+    self_int+=wood+water+dirt+rocks+clay+bowl+sticks
+    self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
+    if pickaxe<1:
+      print 'You need at least one pickaxe to mine.'
+      time.sleep(1.5)
+    if pickaxe>0:
       if self_storage<self_int+1:
         if stanima>60:
           print 'Going into the mines...'
@@ -905,14 +1002,38 @@ while p==True:
           choice = raw_input('What would you like to mine:')
           if choice == "1":
             print 'Going to find some coal...'
+            time.sleep(1)
+            print 'Found some coal. \nMining the coal...'
+            time.sleep(5)
+            coal+=1
+            pickaxe-=1
+          if choice == "2":
+            print 'Going to find some iron...'
+            time.sleep(1)
+            print 'Found some iron. \nMining the iron...'
+            time.sleep(15)
+            iron+=1
+            pickaxe-=1
+          if choice == "3":
+            print 'Going to find some gold...'
+            time.sleep(1)
+            print 'Found some gold. \nMining the gold...'
+            time.sleep(30)
+            gold+=1
+            pickaxe-=1
+          if choice == "4":
+            print 'Going to find some diamonds...'
+            time.sleep(1)
+            print 'Found some diamonds. \nMining the diamonds...'
+            time.sleep(60)
+            diamond+=1
+            pickaxe-=1
     choice = ''
-    if dev==False:
-      dev_promt()
   if choice in exit_pos:
     print 'Goodbye.'
     p=False
   if choice == "*":
-    loop4(s=True,numbers=False)
+    loop4(s=True,other=True,numbers=False)
     #clay,bowl,storage
     move_on=raw_input('Hit enter to exit bag:').lower()
     if move_on=="storage":
@@ -924,3 +1045,254 @@ while p==True:
         dev_promt()
         move_on=raw_input('Hit enter to exit storage:')
     choice = ''
+  if choice == "Dev_menu":
+    if dev==True:
+      if sides == True:
+        print '(1)Give - Gives free stuff'
+        print '(2)Remove - Removes stuff'
+        choice = raw_input('Choose an option:')
+        if choice == "1":
+          clear()
+          loop4(s=False,other=False,numbers=True)
+          choice=raw_input('Choose an option:')
+          if choice == "1":
+            choice = raw_input('How many:')
+            wood+=int(choice)
+            choice = ''
+          if choice == "2":
+            choice = raw_input('How many:')
+            dirt+=int(choice)
+            choice = ''
+          if choice == "3":
+            choice = raw_input('How many:')
+            water+=int(choice)
+            choice = ''
+          if choice == "4":
+            choice = raw_input('How many:')
+            rocks+=int(choice)
+            choice = ''
+          if choice == "5":
+            choice = raw_input('How many:')
+            clay+=int(choice)
+            choice = ''
+          if choice == "6":
+            choice = raw_input('How many:')
+            bowl+=int(choice)
+            choice = ''
+          if choice == "7":
+            choice = raw_input('How many:')
+            sticks+=int(choice)
+            choice = ''
+          if choice == "8":
+            choice = raw_input('How many:')
+            pickaxe+=int(choice)
+            choice = ''
+          if choice == "9":
+            choice = raw_input('How many:')
+            shovel+=int(choice)
+            choice = ''
+          if choice == "10":
+            choice = raw_input('How many:')
+            axe+=int(choice)
+            choice = ''
+          if choice == "11":
+            choice = raw_input('How many:')
+            coal+=int(choice)
+            choice = ''
+          if choice == "12":
+            choice = raw_input('How many:')
+            iron+=int(choice)
+            choice = ''
+          if choice == "13":
+            choice = raw_input('How many:')
+            gold+=int(choice)
+            choice = ''
+          if choice == "14":
+            choice = raw_input('How many:')
+            diamond+=int(choice)
+            choice = ''
+        if choice == "2":
+          clear()
+          loop4(s=False,other=False,numbers=True)
+          choice=raw_input('Choose an option:')
+          if choice == "1":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              wood=0
+            if choice is not "*":
+              if wood==int(choice) or wood>int(choice):
+                wood-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "2":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              dirt=0
+            if choice is not "*":
+              if dirt==int(choice) or dirt>int(choice):
+                dirt-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "3":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              water=0
+            if choice is not "*":
+              if water==int(choice) or water>int(choice):
+                water-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "4":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              rocks=0
+            if choice is not "*":
+              if rocks==int(choice) or rocks>int(choice):
+                rocks-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "5":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              clay=0
+            if choice is not "*":
+              if clay==int(choice) or clay>int(choice):
+                clay-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "6":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              bowl=0
+            if choice is not "*":
+              if bowl==int(choice) or bowl>int(choice):
+                bowl-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "7":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              sticks=0
+            if choice is not "*":
+              if sticks==int(choice) or sticks>int(choice):
+                sticks-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "8":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              pickaxe=0
+            if choice is not "*":
+              if pickaxe==int(choice) or pickaxe>int(choice):
+                pickaxe-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "9":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              shovel=0
+            if choice is not "*":
+              if shovel==int(choice) or shovel>int(choice):
+                shovel-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "10":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              axe=0
+            if choice is not "*":
+              if axe==int(choice) or axe>int(choice):
+                axe-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "11":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              coal=0
+            if choice is not "*":
+              if coal==int(choice) or coal>int(choice):
+                coal-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "12":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              iron=0
+            if choice is not "*":
+              if iron==int(choice) or iron>int(choice):
+                iron-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "13":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              gold=0
+            if choice is not "*":
+              if gold==int(choice) or gold>int(choice):
+                gold-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+          if choice == "14":
+            print '(*)Remove all'
+            choice = raw_input('How many:')
+            if choice == "*":
+              diamond=0
+            if choice is not "*":
+              if diamond==int(choice) or diamond>int(choice):
+                diamond-=int(choice)
+              else:
+                print 'You don\'t have enough. Sorry :('
+                time.sleep(1.5)
+            choice = ''
+        choice = ''
+
+
+
+
+
+
+
+
+
+
+
+
