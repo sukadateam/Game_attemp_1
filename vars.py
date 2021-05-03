@@ -60,6 +60,7 @@ clay_biomes=['clay mountian #1','clay mountian #2','clay mountian #3']
 sand_biomes=['desert #1','desert #2','desert #3','abandoned city','city #1','city #2','city #3']
 dirt_biomes=['forest #1','forest #2','forest #3']
 #Others
+sides=False
 money=10
 stanima=100#Starting Max 100, Default 100
 max_stanima=130
