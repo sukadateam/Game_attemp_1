@@ -1,17 +1,31 @@
+User updates in this version.
+1. You now have money
+2. Tools now have a price
+3. Goodies now show in inventory
+4. You now need a axe to gather wood(not sticks), and need a shovel to gather dirt.
+5. Added a mining option. (Hint: You need a pickaxe)
+6. Now shows requirements in (9)Mining
+7. Added Dev_menu()
+8. Sell no longer puts items in negative numbers.
+9. Added a storage limit on gathering.
+
+Adding in next update.
+1. Different strength tools
+2. Ability to use items. Used for now to make a home. And expand storage.
+
 Future updates.
-1. (needs to be checked) Implement storage limit to gathering/inventory
-2. Give home a power source and the ability to store power.
-3. Add home appliances such as lights and a heater.
-4. Save function
-5. Health
-6. Change (lake1_cords) to (cords) in loop1
-7. Turn (tips) into a help page.
+1. Give home a power source and the ability to store power.
+2. Add home appliances such as lights and a heater.
+3. Save function
+4. Health
+5. Change (lake1_cords) to (cords) in loop1
+6. Turn (tips) into a help page.
+7. Ability to increase max stanima (PART OF "Adding in next update" ITEM 3)
 8. Free_loot, used to add 10 of each item. Use when on menu selection.
 9. Quests
-10. A shop to buy
-
-Tips menu option. (Player chooses question and terminal replies) -- Add these --
-1. What does each item do?
-2. What are some cheat codes?
-3. What are each location used for?
-4. What are the numbers in the cordinates for?
+10. Ability to make money
+11. A shop to buy and sell things
+12. Upgrade pickaxes.
+13. The better the pickaxe the shorter the mining time. Min time: 1 sec, no shorter
+14. If error occurs. Display a message: Don't quit app.
+15. Auto repeat option for gather
