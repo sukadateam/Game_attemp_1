@@ -18,6 +18,8 @@ Adding in next update.
 6. Adding a quests page
 7. Adding abilty to use money as experiment. Use in Dev mode.
 8. Adding shop
+9. Fix prompt 'you need to sleep' on change location when it's when max_stanima is not high enough.
+10. Show exchange of each item on sell.
 
 Future updates.
 1. Give home a power source and the ability to store power.
