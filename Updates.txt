@@ -12,6 +12,12 @@ User updates in this version.
 Adding in next update.
 1. Different strength tools
 2. Ability to use items. Used for now to make a home. And expand storage.
+3. Adding goodies to (storage)
+4. Add wood logs to gather resources
+5. Add wood logs to (storage)
+6. Adding a quests page
+7. Adding abilty to use money as experiment. Use in Dev mode.
+8. Adding shop
 
 Future updates.
 1. Give home a power source and the ability to store power.
