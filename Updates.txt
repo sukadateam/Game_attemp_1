@@ -20,6 +20,8 @@ Adding in next update.
 8. Adding shop
 9. Fix prompt 'you need to sleep' on change location when it's when max_stanima is not high enough.
 10. Show exchange of each item on sell.
+11. Adding Dev_var() for changing vars.
+12. Adding save function.
 
 Future updates.
 1. Give home a power source and the ability to store power.
