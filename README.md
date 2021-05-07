@@ -10,5 +10,5 @@ The vars.py file is for storing all the vars.
 (And I know, I don't need to do that, It's just to keep it clean "Somewhat.")
 
 
-Current Version: 0.1.3
-Next update version date: 05/07/21, Friday, Version: 0.1.4
+Current Version: 0.1.4
+Updated: 05/07/21
