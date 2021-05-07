@@ -1,41 +1,56 @@
 User updates in this version.
-1. You now have money
-2. Tools now have a price
-3. Goodies now show in inventory
-4. You now need a axe to gather wood(not sticks), and need a shovel to gather dirt.
-5. Added a mining option. (Hint: You need a pickaxe)
-6. Now shows requirements in (9)Mining
-7. Added Dev_menu()
-8. Sell no longer puts items in negative numbers.
-9. Added a storage limit on gathering.
+1. Dev_menu() disables location check on Gather resources
+2. Fixed bugs in crafting
+3. Removed devs lock on crafting menu items: pickaxe, shovel, and axe
+4. Updated starting resources
+5. Updated starting money
+6. Updated starting tools
+7. Prompts now show correctly on crafting menu
+8. Dev_menu() disables stanima check on Change location.
+9. Updated exercise function with lyrics. Rick Astley.
+10. Easy access to exercise with dev mode.
+11. Fixed incorrect message pop up on sell "You don't have any to sell"
+12. Dev_menu() disables checks on Mining
+13. Prompts now show in Mining
+14. Added save function
+15. Added a quests function
+16. Added buy_price_ to save
+17. Added price_: gold, iron, coal, diamond to save
+18. Added a buy function
+19. Fixed problem on selling coal, iron, gold, and diamonds.
+20. Goodies now show in storage
+21. Change location now tells you when your max_stanima is not high enough to proceed.
+22. Added a Dev_var() page. Currently not complete but this is what is done for now.
 
 Adding in next update.
-1. Different strength tools
-2. Ability to use items. Used for now to make a home. And expand storage.
-3. Adding goodies to (storage)
-4. Add wood logs to gather resources
-5. Add wood logs to (storage)
-6. Adding a quests page
-7. Adding abilty to use money as experiment. Use in Dev mode.
-8. Adding shop
-9. Fix prompt 'you need to sleep' on change location when it's when max_stanima is not high enough.
-10. Show exchange of each item on sell.
-11. Adding Dev_var() for changing vars.
-12. Adding save function.
+1. Adding a few more quests.
+2. Change (lake1_cords) to (cords) in loop1
+3. Turn (tips) into a help page. #Might do in next update. If not, remove page.
 
 Future updates.
-1. Give home a power source and the ability to store power.
-2. Add home appliances such as lights and a heater.
-3. Save function
+1. Auto repeat option for gather
+2. Adjust game setting to allow decimal money. Ex: 2.75 or 2.3
+3. Allow user to buy more self_storage in Buy
+
+Unknown updated: #Might do. Not sure right now.
+1. Different strength tools.
+2. Ability to use items. Used for now to make a home. And expand storage.
+3. Show exchange of each item on sell.
 4. Health
-5. Change (lake1_cords) to (cords) in loop1
-6. Turn (tips) into a help page.
-7. Ability to increase max stanima (PART OF "Adding in next update" ITEM 3)
-8. Free_loot, used to add 10 of each item. Use when on menu selection.
-9. Quests
-10. Ability to make money
-11. A shop to buy and sell things
-12. Upgrade pickaxes.
-13. The better the pickaxe the shorter the mining time. Min time: 1 sec, no shorter
-14. If error occurs. Display a message: Don't quit app.
-15. Auto repeat option for gather
+5. Add home appliances such as lights and a heater.
+6. Give home a power source and the ability to store power.
+7. Upgradable tools
+
+Hint: You can look in vars.py file for the code. AT THE BOTTOM.
+Dev options. (FOR TESTING) -- (CODE MUST BE GIVEN TO ACTIVATE)
+1. Increase max stanima
+2. Change current stanima
+3. Disable stanima
+4. Infinite materials
+
+
+Tips menu option. (Player chooses question and terminal replies)
+1. What does each item do?
+2. What are some cheat codes?
+3. What are each location used for?
+4. What are the numbers in the cordinates for?
