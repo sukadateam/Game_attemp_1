@@ -663,7 +663,7 @@ def dev_promt():
   print 'You must activate Dev_options to use this. This lock will be removed in future updates. Go to vars.py to see how to enable dev_options. It\'s at the bottom.'
 #move_on=raw_input('Hit enter to exit crafting:')
 p=True
-dev=True#Default False
+dev=False#Default False
 while p==True:
   clear()
   if dev==True:
