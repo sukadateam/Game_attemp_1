@@ -1,23 +1,27 @@
 import time,os,random
-from vars import *
-def loop1(lake1_cords,moving_to):
+dev=False#Default False
+if dev==True:
+  from vars_beta import *
+if dev==False:
+  from vars import *
+def loop1(cords,moving_to):
   global current_location, current_surrounding,time,stanima,dev
   fixed1=0
   fixed2=0
   fixed3=0
   time.sleep(1.5)#5
-  if current_location[0]<lake1_cords[0]:
-    fixed1=lake1_cords[0]-current_location[0]
-  if current_location[0]>lake1_cords[0]:
-    fixed1=current_location[0]-lake1_cords[0]
-  if current_location[1]<lake1_cords[1]:
-    fixed2=lake1_cords[1]-current_location[1]
-  if current_location[1]>lake1_cords[1]:
-    fixed2=current_location[1]-lake1_cords[1] #Up to this point is the same for all lakes
-  if current_location[2]<lake1_cords[2]:
-    fixed3=lake1_cords[2]-current_location[2]
-  if current_location[2]>lake1_cords[2]:
-    fixed3=current_location[2]-lake1_cords[2]
+  if current_location[0]<cords[0]:
+    fixed1=cords[0]-current_location[0]
+  if current_location[0]>cords[0]:
+    fixed1=current_location[0]-cords[0]
+  if current_location[1]<cords[1]:
+    fixed2=cords[1]-current_location[1]
+  if current_location[1]>cords[1]:
+    fixed2=current_location[1]-cords[1] #Up to this point is the same for all lakes
+  if current_location[2]<cords[2]:
+    fixed3=cords[2]-current_location[2]
+  if current_location[2]>cords[2]:
+    fixed3=current_location[2]-cords[2]
   total_distance=fixed1+fixed2+fixed3
   stanima1=total_distance/3.5
   stanima1=round(stanima1)
@@ -25,7 +29,7 @@ def loop1(lake1_cords,moving_to):
     print 'Moving to location...'
     print '\nTraveling cords:',fixed1,fixed2,fixed3
     current_surrounding=moving_to
-    current_location=lake1_cords
+    current_location=cords
     if dev==False:
       stanima-=stanima1
     print 'Total distance traveled:',total_distance,'(meters)'
@@ -663,9 +667,9 @@ def dev_promt():
   print 'You must activate Dev_options to use this. This lock will be removed in future updates. Go to vars.py to see how to enable dev_options. It\'s at the bottom.'
 #move_on=raw_input('Hit enter to exit crafting:')
 p=True
-dev=False#Default False
 while p==True:
   clear()
+  print 'Current Version: 0.1.5'
   if dev==True:
     print 'Dev_options: Enabled\n'
   print 'Please read tips if this is the first time playing. Thank you!'
@@ -687,7 +691,8 @@ while p==True:
   if dev==True:
     print '\nDev tools:'
     print 'Dev_menu()'
-    print 'Dev_var()\n'
+    print 'Dev_var()'
+    print 'Vars_beta\n'
   print '\nTo get help type (help)'
   choice=raw_input('Choose an option or enter code:')
   if choice==dev_options:
@@ -713,18 +718,22 @@ while p==True:
     choice=raw_input('What would you like to gather:')
     loop2()
     if choice == "1":
-      if self_storage<self_int+3:
-        print 'Your inventory is full.'
-        choice='blah'
-      if choice == "1":
-        if axe>0:
-          print 'Gathering wood...'
-          time.sleep(3)
-          wood+=3
-          print 'Gathered wood'
-          time.sleep(1)
-        if axe<1:
-          print 'You need more axe(s)'
+      if dev==False:
+        if current_surrounding not in dirt_biomes:
+          print 'You must be in the forest to gather sticks.'
+      if current_surrounding in dirt_biomes or dev==True:
+        if self_storage<self_int+3:
+          print 'Your inventory is full.'
+          choice='blah'
+        if choice == "1":
+          if axe>0:
+            print 'Gathering wood...'
+            time.sleep(3)
+            wood+=3
+            print 'Gathered wood'
+            time.sleep(1)
+          if axe<1:
+            print 'You need more axe(s)'
     if choice == "2":
       if dev==False:
         if current_surrounding not in water_biomes:
@@ -957,11 +966,53 @@ while p==True:
       stanima=max_stanima
     choice = ''
   if choice == "6":
-    print 'Things with (*) at the end are locked. At the end, not the beggining. Just making that clear.'
-    print '\nYou can be anywhere when entering the mines. There is a mine in every location.'
-    if dev==True:
+    print 'Welcome to Brandon\'s game.'
+    print 'For info on each item. Type the items corresponding number.'
+    print '(1)Gather resources'
+    print '(2)Change location'
+    print '(3)Go back home'
+    print '(4)Crafting menu'
+    print '(5)Sleep'
+    print '(6)Tips'
+    print '(7)Exersice'
+    print '(8)Sell'
+    print '(9)Mining'
+    print '(10)Quests'
+    print '(11)Buy'
+    print '(12)Show inventory'
+    if dev==False:
       print '\nTo store store items at home. Do this. \n1. Make sure you are at home\n2. Open inventory\n3. Instead of hiting enter to exit type (storage) to store items.\nHint: You can also grab items back from doing this.'
-    move_on=raw_input('\nHit enter to exit tips:')
+    choice=raw_input('Which item:')
+    if choice == "1":
+      print 'This is where you collect resources. You can get these items: Wood, Water, Dirt, Rocks, and sticks.\nHint: Check change location on tips for more info on gathering.'
+    if choice == "2":
+      print 'This is where you move to different areas of the world. Each place allows you to get different items on (gather resources).'
+      print 'Wood: Forest'
+      print 'Water: Lake, River'
+      print 'Dirt: Forest'
+      print 'Rocks: Clay mountian'
+      print 'Sticks: Forest'
+    if choice == "3":
+      print 'This will bring you back home.'
+    if choice == "4":
+      print 'This is where you craft items.'
+    if choice == "5":
+      print 'When your stanima is low, go here to sleep and regain your energy. Maximum Stanima can increase by exercising.'
+    if choice == "6":
+      print 'Well, your already here. I bet you can guess what this is.'
+    if choice == "7":
+      print 'When your stanima doesn\'t go as high as you would like you can exercise to increase you Maximum stanima.'
+    if choice == "8":
+      print 'Have things you don\'t want? Then sell them.'
+    if choice == "9":
+      print 'Grab minerals and sell them for a profit. This does require a pickaxe.'
+    if choice == "10":
+      print 'Complete quests for a reward. Rewards are usually money. Not always.'
+    if choice == "11":
+      print 'Don\'t have things you want? Then buy them.'
+    if choice == "12":
+      print 'Shows what you currently have on you. To access storage, type (storage) instead of hitting enter to exit.'
+    move_on=raw_input('Hit enter to exit tips:')
     choice = ''
   if choice == "7":
     if current_surrounding=="exercise mountian #1" or dev==True:
@@ -1291,6 +1342,7 @@ while p==True:
           print 'Okay then.'
       if quest2==False:
         if hi==True:
+          hi=False
           print 'Your second quest is to get me: 2 pickaxe(s)'
           print 'Reward: 32 money'
           choice=raw_input('Do you have 2 pickaxe(s)').lower()
@@ -1305,8 +1357,46 @@ while p==True:
               quest2=True
             if pickaxe<2:
               print 'Sorry, but you do not. Come back when you do.'
+      if quest3==False:
+        if hi==True:
+          hi=False
+          print 'Your third quest is to get me: 5 wood'
+          print 'Reward: 30 money'
+          choice=raw_input('Do you have 5 wood:').lower()
+          if choice == "yes":
+            print "Checking..."
+            time.sleep(1)
+            if wood>4:
+              print 'Congrats you finished your third quest'
+              print 'You got 30 money.'
+              wood-=5
+              money+=30
+              quest3=True
+            if wood<5:
+              print 'Sorry, but you do not. Come back when you do.'
+      if quest4==False:
+        if hi==True:
+          hi=False
+          print 'Your 4th quest is to get me: 15 sticks'
+          print 'Reward: 45 money'
+          choice=raw_input('Do you have 15 sticks:').lower()
+          if choice == "yes":
+            print 'Checking...'
+            time.sleep(1)
+            if sticks>14:
+              print 'Congrats you finished your 4th quest'
+              print 'You got 45 money'
+              sticks-=15
+              money+=45
+              quest4=True
+            if sticks<15:
+              print 'Sorry, but you do not. Come back when you do.'
+      if quest4==False:
+        if hi==True:
+          hi=False
       if quest1==True and quest2==True:
-        print 'You have completed all of the quests.'
+        if quest3==True and quest4==True:
+          print 'You have completed all of the quests.'
     move_on=raw_input('Hit enter to exit quest:')
     choice=''
   if choice == "11":
@@ -1620,6 +1710,8 @@ while p==True:
     save.write('#Quests\n')
     save.write('quest1='+str(quest1)+' #False=Not done\n')
     save.write('quest2='+str(quest2)+' #True=Done\n')
+    save.write('quest3='+str(quest3)+'\n')
+    save.write('quest4='+str(quest4)+'\n')
     save.write("\n#Though all cords = distance\n")
     save.write("#Lake = 27,0,?\n")
     save.write("#River = 10,0,?\n")
@@ -2009,6 +2101,11 @@ while p==True:
           if choice=="false":
             quest2=False
           choice=''
-
-
+  if choice == "vars_beta":
+    if dev==True:
+      if sides==True:
+        from vars_beta import *
+      if dev==False:
+        dev_promt()
+        move_on=raw_input('Hit enter to exit vars_beta:')
 
