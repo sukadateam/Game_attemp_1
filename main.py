@@ -1,5 +1,5 @@
 import time,os,random
-dev=False#Default False
+dev=True#Default False
 if dev==True:
   from vars_beta import *
 if dev==False:
@@ -583,6 +583,12 @@ def loop4(s,other,numbers,price):
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print side2+'Diamonds:',str(diamond)+', Price:',buy_price_diamond
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Copper:',str(copper)+',   Price:',buy_price_copper
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Lapiz:',str(lapiz)+'     Price:',buy_price_lapiz
   if numbers==True:
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
@@ -629,6 +635,12 @@ def loop4(s,other,numbers,price):
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print side2+'Diamonds:',diamond,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Copper:',copper,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Lapiz:',lapiz,'(Qty)'
   if numbers==False:
     if price==False:
       print '  Wood:',wood,'(logs)'
@@ -649,6 +661,8 @@ def loop4(s,other,numbers,price):
     print '  Iron:',iron,'(Qty)'
     print '  Gold:',gold,'(Qty)'
     print '  Diamonds:',diamond,'(Qty)'
+    print '  Copper:',copper,'(Qty)'
+    print '  Lapiz:',lapiz,'(Qty)'
   if s==True:
     print 'Storage:'
     print '  Inventory Storage:',self_storage,'(qty of items)'
@@ -669,7 +683,7 @@ def dev_promt():
 p=True
 while p==True:
   clear()
-  print 'Current Version: 0.1.5'
+  print 'Current Version: 0.1.6, Test 1'
   if dev==True:
     print 'Dev_options: Enabled\n'
   print 'Please read tips if this is the first time playing. Thank you!'
@@ -1252,6 +1266,36 @@ while p==True:
         except ValueError:
           print 'You need to enter a number.'
       choice=''
+    if choice=="15":
+      if copper<1:
+        print 'You don\'t have any to sell'
+      if copper>0:
+        choice=raw_input('How many:')
+        try:
+          if copper==int(choice) or copper>int(choice):
+            money+=int(choice)*price_copper
+            copper-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Copper:',copper
+        except ValueError:
+          print 'You need to enter a number.'
+      choice=''
+    if choice=="16":
+      if lapiz<1:
+        print 'You don\'t have any to sell'
+      if lapiz>0:
+        choice=raw_input('How many:')
+        try:
+          if lapiz==int(choice) or lapiz>int(choice):
+            money+=int(choice)*price_lapiz
+            lapiz-=int(choice)
+            print 'Current holdings:'
+            print 'Money:',money
+            print 'Lapiz:',lapiz
+        except ValueError:
+          print 'You need to enter a number.'
+      choice=''
     move_on=raw_input('Hit enter to exit sell:')
   if choice == "9":
     self_int=0
@@ -1259,10 +1303,10 @@ while p==True:
     self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
     if dev==True:
       print 'Inventory capacity:',self_int,'out of',self_storage
-    if pickaxe<1:
+    if pickaxe<1 and dev==False:
       print 'You need at least one pickaxe to mine.'
       time.sleep(1.5)
-    if pickaxe>0:
+    if pickaxe>0 or dev==True:
       if self_storage>self_int+1 or dev==True:
         if stanima>59 or dev==True:
           print 'Going into the mines...'
@@ -1272,6 +1316,8 @@ while p==True:
           print '(2)Iron       Est: 15 sec'
           print '(3)Gold       Est: 30 sec'
           print '(4)Diamond    Est: 1 min'
+          print '(5)Copper     Est: 10 sec'
+          print '(6)Lapiz      Est: 17 sec'
           choice = raw_input('What would you like to mine:')
           if choice == "1":
             print 'Going to find some coal...'
@@ -1309,6 +1355,24 @@ while p==True:
             diamond+=1
             pickaxe-=1
             print 'You got 1 diamond! But lost 1 pickaxe :('
+          if choice == "5":
+            print 'Going to find some copper...'
+            time.sleep(1)
+            print 'Found some copper. \nMining the copper...'
+            print 'Est: 10s'
+            time.sleep(10)
+            copper+=1
+            pickaxe-=1
+            print 'You got 1 copper! But lost 1 pickaxe :('
+          if choice == "6":
+            print 'Going to find some lapiz...'
+            time.sleep(1)
+            print 'Found some lapiz. \nMining the lapiz...'
+            print 'Est: 17s'
+            time.sleep(17)
+            lapiz+=1
+            pickaxe-=1
+            print 'You got 1 lapiz! But lost 1 pickaxe :('
         if stanima<60 or dev==False:
           clear()
           print 'You need to go to sleep.'
@@ -1403,7 +1467,6 @@ while p==True:
     self_int=0
     self_int+=wood+water+dirt+rocks+clay+bowl+sticks
     self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
-    print 'This page is in the works.'
     if self_int<self_storage+1:
       loop4(s=False,other=False,numbers=False,price=True)
       choice=raw_input('What would you like to buy:')
@@ -1617,6 +1680,36 @@ while p==True:
         except ValueError:
           print 'System message: ValueError'
           print 'Reason: A number was not entered.'
+      if choice == "15":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_copper*int(choice):
+            money-=buy_price_copper*int(choice)
+            copper+=int(choice)
+            print 'You now have:',copper
+          if money<buy_price_copper*int(choice):
+            print 'You don\'t have enough money'
+            print 'Total asked:',choice,'copper'
+            print 'Total cost:',buy_price_copper*int(choice),'money'
+        except ValueError:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
+      if choice == "16":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_lapiz*int(choice):
+            money-=buy_price_lapiz*int(choice)
+            lapiz+=int(choice)
+            print 'You now have:',lapiz
+          if money<buy_price_lapiz*int(choice):
+            print 'You don\'t have enough money'
+            print 'Total asked:',choice,'lapiz'
+            print 'Total cost:',buy_price_lapiz*int(choice),'money'
+        except ValueError:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
       choice=''
     if self_int+1>self_storage:
       print 'Your inventory is at capacity.'
@@ -1654,6 +1747,8 @@ while p==True:
     save.write('iron='+str(iron)+'\n')
     save.write('gold='+str(gold)+'\n')
     save.write('diamond='+str(diamond)+'\n')
+    save.write('copper='+str(copper)+'\n')
+    save.write('lapiz='+str(lapiz)+'\n')
     save.write('#Home storage vars\n')
     save.write('storage_wood='+str(storage_wood)+'\n')
     save.write('storage_water='+str(storage_water)+'\n')
@@ -1734,7 +1829,9 @@ while p==True:
     save.write('price_coal='+str(price_coal)+'\n')
     save.write('price_iron='+str(price_iron)+'\n')
     save.write('price_gold='+str(price_gold)+'\n')
-    save.write('price_diamond='+str(price_diamond)+'\n\n')
+    save.write('price_diamond='+str(price_diamond)+'\n')
+    save.write('price_copper='+str(price_copper)+'\n')
+    save.write('price_lapiz='+str(price_lapiz)+'\n\n')
     save.write('#Buy prices\n')
     save.write('buy_price_wood='+str(buy_price_wood)+'\n')
     save.write('buy_price_dirt='+str(buy_price_dirt)+'\n')
@@ -1749,7 +1846,9 @@ while p==True:
     save.write('buy_price_coal='+str(buy_price_coal)+'\n')
     save.write('buy_price_iron='+str(buy_price_iron)+'\n')
     save.write('buy_price_gold='+str(buy_price_gold)+'\n')
-    save.write('buy_price_diamond='+str(buy_price_diamond)+'\n\n')
+    save.write('buy_price_diamond='+str(buy_price_diamond)+'\n')
+    save.write('buy_price_coppper='+str(buy_price_copper)+'\n')
+    save.write('buy_price_lapiz='+str(buy_price_lapiz)+'\n\n')
     save.write('# --- CODES IN GAME ---\n')
     save.write("dev_options='W3rS3cur3' #In the main menu enter this to activate.")
     save.close()
