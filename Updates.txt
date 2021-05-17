@@ -1,8 +1,11 @@
 User updates in this version.
-1. Added 2 more quests.
-2. Tips is now for explaining each item.
-3. You now need to be in forest to gather wood.
-4. Changed (lake1_cords) to (cords) in loop1
+1. Mining with dev mode no longer checks for a pickaxe.
+2. Added copper and lapiz to mining.
+3. Added copper and lapiz to inventory and other things that show it.
+4. Added copper and lapiz to save, along with price_ and buy_price vars.
+5. Added copper and lapiz to sell
+6. Added copper and lapiz to buy
+7. Removed "This page is in the works" on buy.
 
 Adding in next update.
 1. Auto repeat option for gather
@@ -11,7 +14,7 @@ Adding in next update.
 4. Show exchange of each item on sell.
 
 Future updates.
-1. N/A
+1. On showing price for buy, keep the price in the same spot if the item qty increases.
 
 Unknown updated: #Might do. Not sure right now.
 1. Different strength tools.
