@@ -11,6 +11,8 @@ sticks=10 #Qty
 coal=0
 iron=0
 gold=0
+copper=0
+lapiz=0
 diamond=0
 #Home storage vars
 storage_wood=0
@@ -95,6 +97,8 @@ price_coal=1
 price_iron=3
 price_gold=5
 price_diamond=7
+price_copper=0
+price_lapiz=0
 
 #Buy prices
 buy_price_wood=3
@@ -111,6 +115,8 @@ buy_price_coal=2
 buy_price_iron=4
 buy_price_gold=6
 buy_price_diamond=8
+buy_price_coppper=0
+buy_price_lapiz=0
 
 # --- CODES IN GAME ---
 dev_options='W3rS3cur3' #In the main menu enter this to activate.
