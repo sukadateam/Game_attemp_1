@@ -13,4 +13,4 @@ The vars.py file is for storing all the vars.
 Current Version: 0.1.6, Test 1
 Updated: 05/17/21
 
-I'm still working on this version 0.1.6. Next version will be 0.1.6 Test 2. I will try and have this out by friday(5/21/21).
+I'm still working on this version 0.1.6. Next version will be 0.1.6 Test 2. I will try and have this out by tuesday(5/18/21).
