@@ -1,9 +1,26 @@
+#Version 0.1.6 Test 2 is out!
 import time,os,random
-dev=True#Default False
+dev=False#Default False
 if dev==True:
   from vars_beta import *
 if dev==False:
   from vars import *
+try:
+  if cheat_code == "wood_you?":
+    wood+=cheat_amount
+  if cheat_code == "i'm_special":
+    dirt+=cheat_amount
+  if cheat_code == "voodoo_magic":
+    water+=cheat_amount
+  if cheat_code == "hello_world!":
+    rocks+=cheat_amount
+  if cheat_code == "all_of_the_above":
+    wood+=cheat_amount
+    dirt+=cheat_amount
+    water+=cheat_amount
+    rocks+=cheat_amount
+except:
+  pass
 def loop1(cords,moving_to):
   global current_location, current_surrounding,time,stanima,dev
   fixed1=0
@@ -50,480 +67,6 @@ def loop2():
   if ')' in choice:
     choice = choice.replace(')','')
     sides=True
-def loop3():
-  #Use clear() before entering
-  global storage_wood,wood,storage_water,water
-  global storage_dirt,dirt,storage_rocks,rocks
-  global storage_clay,clay,storage_bowl,bowl
-  global storage_sticks,sticks,storage_pickaxe,pickaxe
-  global storage_axe,axe,storage_shovel,shovel
-  global home_storage,dev
-  choice1=''
-  choice2=''
-  storage_int=0
-  storage_int+=storage_water+storage_wood+storage_dirt
-  storage_int+=storage_rocks+storage_clay+storage_bowl
-  storage_int+=storage_sticks+storage_pickaxe+storage_axe
-  storage_int+=storage_shovel
-  self_int=0
-  self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-  self_int+=pickaxe+axe+shovel
-  if dev==True:
-    print 'self_int:',self_int
-    print 'storage_int:',storage_int
-    print 'home_storage:',home_storage
-    print 'self_storage:',self_storage
-  if storage_int+1<home_storage+1:
-    if self_int+1>self_storage:
-      print 'Both Your Home and inventory are full. In order to use this function, you must remove some items.'
-      print '\nHint: Sell the things you don\'t need'
-    if self_int>self_storage+1:
-      print 'Your home storage is full. You can not add things to it. But, you may take things away.'
-      print '(1)Withdraw\n(2)Leave'
-      move_on=raw_input('1 or 2:').lower()
-      choice1='hi'
-      if move_on=="1":
-        choice2="1"
-      if move_on=="2":
-        choice1="wefhgef"
-    if choice1 is not 'hi':
-      if choice1 is not "wefhgef":
-        print '(1)Withdraw\n(2)Deposit\n(3)Leave'
-        choice2=raw_input("Choose one of the options:")
-        clear()
-        if choice2 == "1":
-          print 'Items stored:'
-          print '(1)Wood:',storage_wood,'(logs)'
-          print '(2)Water:',storage_water,'(oz)'
-          print '(3)Dirt:',storage_dirt,'(lbs)'
-          print '(4)Rocks:',storage_rocks,'(Qty)'
-          print '(5)Clay:',storage_clay,'(lbs)'
-          print '(6)Bowl:',storage_bowl,'(Qty)'
-          print '(7)Sticks:',storage_sticks,'(Qty)'
-          print '(8)Pickaxes:',storage_pickaxe,'(Qty)'
-          print '(9)Shovels:',storage_shovel,'(Qty)'
-          print '(10)Axes:',storage_axe,'(Qty)'
-          print '(11)Coal:',coal,'(Qty)'
-          print '(12)Iron:',iron,'(Qty)'
-          print '(13)Gold:',gold,'(Qty)'
-          print '(14)Diamond:',diamond,'(Qty)'
-          choice = raw_input('What would you like to withdraw:')
-          if choice == "1":
-            if storage_wood<1:
-              print 'You don\'t have enough.'
-            if storage_wood>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_wood+1:
-                  wood+=int(choice)
-                  storage_wood-=int(choice)
-                  print 'Current holding:'
-                  print 'Wood in storage:',storage_wood
-                  print 'Wood in inventory:',wood
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "2":
-            if storage_water<1:
-              print 'You don\'t have enough.'
-            if storage_water>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_water+1:
-                  water+=int(choice)
-                  storage_water-=int(choice)
-                  print 'Current holding:'
-                  print 'Water in storage:',storage_water
-                  print 'Water in inventory:',water
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "3":
-            if storage_dirt<1:
-              print 'You don\'t have enough.'
-            if storage_dirt>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_dirt+1:
-                  dirt+=int(choice)
-                  storage_dirt-=int(choice)
-                  print 'Current holding:'
-                  print 'Dirt in storage:',storage_dirt
-                  print 'Dirt in inventory:',dirt
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "4":
-            if storage_rocks<1:
-              print 'You don\'t have enough.'
-            if storage_rocks>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_rocks+1:
-                  rocks+=int(choice)
-                  storage_rocks-=int(choice)
-                  print 'Current holding:'
-                  print 'Rocks in storage:',storage_rocks
-                  print 'Rocks in inventory:',rocks
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "5":
-            if storage_clay<1:
-              print 'You don\'t have enough.'
-            if storage_clay>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_clay+1:
-                  clay+=int(choice)
-                  storage_clay-=int(choice)
-                  print 'Current holding:'
-                  print 'Clay in storage:',storage_clay
-                  print 'Clay in inventory:',clay
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "7":
-            if storage_sticks<1:
-              print 'You don\'t have enough.'
-            if storage_sticks>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_clay+1:
-                  clay+=int(choice)
-                  storage_clay-=int(choice)
-                  print 'Current holding:'
-                  print 'Sticks in storage:',storage_clay
-                  print 'Sticks in inventory:',clay
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "6":
-            if storage_bowl<1:
-              print 'You don\'t have enough.'
-            if storage_bowl>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_bowl+1:
-                  bowl+=int(choice)
-                  storage_bowl-=int(choice)
-                  print 'Current holding:'
-                  print 'Bowl in storage:',storage_bowl
-                  print 'Bowl in inventory:',bowl
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "8":
-            if storage_pickaxe<1:
-              print 'You don\'t have enough.'
-            if storage_pickaxe>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_pickaxe+1:
-                  pickaxe+=int(choice)
-                  storage_pickaxe-=int(choice)
-                  print 'Current holding:'
-                  print 'Pickaxe(s) in storage:',storage_pickaxe
-                  print 'Pickaxe(s) in inventory:',pickaxe
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "9":
-            if storage_shovel<1:
-              print 'You don\'t have enough.'
-            if storage_shovel>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_shovel+1:
-                  shovel+=int(choice)
-                  storage_shovel-=int(choice)
-                  print 'Current holding:'
-                  print 'Shovel(s) in storage:',storage_shovel
-                  print 'Shovel(s) in inventory:',shovel
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "10":
-            if storage_axe<1:
-              print 'You don\'t have enough.'
-            if storage_axe>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_axe+1:
-                  axe+=int(choice)
-                  storage_axe-=int(choice)
-                  print 'Current holding:'
-                  print 'Axe(s) in storage:',storage_axe
-                  print 'Axe(s) in inventory:',axe
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "11":
-            if storage_coal<1:
-              print 'You don\'t have enough.'
-            if storage_coal>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_coal+1:
-                  coal+=int(choice)
-                  storage_coal-=int(choice)
-                  print 'Current holding:'
-                  print 'Coal in storage:',storage_coal
-                  print 'Coal in inventory:',coal
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "12":
-            if storage_iron<1:
-              print 'You don\'t have enough.'
-            if storage_iron>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_iron+1:
-                  iron+=int(choice)
-                  storage_iron-=int(choice)
-                  print 'Current holding:'
-                  print 'Iron in storage:',storage_iron
-                  print 'Iron in inventory:',iron
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "13":
-            if storage_gold<1:
-              print 'You don\'t have enough.'
-            if storage_gold>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_gold+1:
-                  gold+=int(choice)
-                  storage_gold-=int(choice)
-                  print 'Current holding:'
-                  print 'Gold in storage:',storage_gold
-                  print 'Gold in inventory:',gold
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "14":
-            if storage_diamond<1:
-              print 'You don\'t have enough.'
-            if storage_diamond>0:
-              choice=raw_input('How many to withdraw:')
-              try:
-                if int(choice)<storage_diamond+1:
-                  diamond+=int(choice)
-                  storage_diamond-=int(choice)
-                  print 'Current holding:'
-                  print 'Diamond(s) in storage:',storage_diamond
-                  print 'Diamond(s) in inventory:',diamond
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          move_on=raw_input('Hit enter to exit crafting:')
-          choice=''
-        if choice2 == "2":
-          print 'You have:'
-          print '(1)Wood:',wood,'(logs)'
-          print '(2)Water:',water,'(oz)'
-          print '(3)Dirt:',dirt,'(lbs)'
-          print '(4)Rocks:',rocks,'(Qty)'
-          print '(5)Clay:',clay,'(lbs)'
-          print '(6)Bowl:',bowl,'(Qty)'
-          print '(7)Sticks:',sticks,'(Qty)'
-          print '(8)Pickaxes:',pickaxe,'(Qty)'
-          print '(9)Shovels:',shovel,'(Qty)'
-          print '(10)Axes:',axe,'(Qty)'
-          print '(11)Coal:',coal,'(Qty)'
-          print '(12)Iron:',iron,'(Qty)'
-          print '(13)Gold:',gold,'(Qty)'
-          print '(14)Diamond:',diamond,'(Qty)'
-          choice = raw_input('What would you like to withdraw:')
-          if choice == "1":
-            if wood<1:
-              print 'You don\'t have enough.'
-            if wood>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<wood+1:
-                  wood-=int(choice)
-                  storage_wood+=int(choice)
-                  print 'Current holding:'
-                  print 'Wood in storage:',storage_wood
-                  print 'Wood in inventory:',wood
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "2":
-            if water<1:
-              print 'You don\'t have enough.'
-            if water>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<water+1:
-                  water-=int(choice)
-                  storage_water+=int(choice)
-                  print 'Current holding:'
-                  print 'Water in storage:',storage_water
-                  print 'Water in inventory:',water
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "3":
-            if dirt<1:
-              print 'You don\'t have enough.'
-            if dirt>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<dirt+1:
-                  dirt-=int(choice)
-                  storage_dirt+=int(choice)
-                  print 'Current holding:'
-                  print 'Dirt in storage:',storage_dirt
-                  print 'Dirt in inventory:',dirt
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "4":
-            if rocks<1:
-              print 'You don\'t have enough.'
-            if rocks>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<rocks+1:
-                  rocks-=int(choice)
-                  storage_rocks+=int(choice)
-                  print 'Current holding:'
-                  print 'Rock(s) in storage:',storage_rocks
-                  print 'Rock(s) in inventory:',rocks
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "5":
-            if clay<1:
-              print 'You don\'t have enough.'
-            if clay>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<clay+1:
-                  clay-=int(choice)
-                  storage_clay+=int(choice)
-                  print 'Current holding:'
-                  print 'Clay in storage:',storage_clay
-                  print 'Clay in inventory:',clay
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "6":
-            if bowl<1:
-              print 'You don\'t have enough.'
-            if bowl>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<bowl+1:
-                  bowl-=int(choice)
-                  storage_bowl+=int(choice)
-                  print 'Current holding:'
-                  print 'Bowl(s) in storage:',storage_bowl
-                  print 'Bowl(s) in inventory:',bowl
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "7":
-            if sticks<1:
-              print 'You don\'t have enough.'
-            if sticks>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<sticks+1:
-                  sticks-=int(choice)
-                  storage_sticks+=int(choice)
-                  print 'Current holding:'
-                  print 'Stick(s) in storage:',storage_sticks
-                  print 'Stick(s) in inventory:',sticks
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "8":
-            if pickaxe<1:
-              print 'You don\'t have enough.'
-            if pickaxe>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<pickaxe+1:
-                  pickaxe-=int(choice)
-                  storage_pickaxe+=int(choice)
-                  print 'Current holding:'
-                  print 'Pickaxe(s) in storage:',storage_pickaxe
-                  print 'Pickaxe(s) in inventory:',pickaxe
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "9":
-            if shovel<1:
-              print 'You don\'t have enough.'
-            if shovel>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<shovel+1:
-                  shovel-=int(choice)
-                  storage_shovel+=int(choice)
-                  print 'Current holding:'
-                  print 'Shovel(s) in storage:',storage_shovel
-                  print 'Shovel(s) in inventory:',shovel
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "10":
-            if axe<1:
-              print 'You don\'t have enough.'
-            if axe>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<axe+1:
-                  axe-=int(choice)
-                  storage_axe+=int(choice)
-                  print 'Current holding:'
-                  print 'Axe(s) in storage:',storage_axe
-                  print 'Axe(s) in inventory:',axe
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "11":
-            if coal<1:
-              print 'You don\'t have enough.'
-            if coal>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<coal+1:
-                  coal-=int(choice)
-                  storage_coal+=int(choice)
-                  print 'Current holding:'
-                  print 'Coal in storage:',storage_coal
-                  print 'Coal in inventory:',coal
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "12":
-            if iron<1:
-              print 'You don\'t have enough.'
-            if iron>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<iron+1:
-                  iron-=int(choice)
-                  storage_iron+=int(choice)
-                  print 'Current holding:'
-                  print 'Iron in storage:',storage_iron
-                  print 'Iron in inventory:',iron
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "13":
-            if gold<1:
-              print 'You don\'t have enough.'
-            if gold>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<gold+1:
-                  gold-=int(choice)
-                  storage_gold+=int(choice)
-                  print 'Current holding:'
-                  print 'Gold in storage:',storage_gold
-                  print 'Gold in inventory:',gold
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          if choice == "14":
-            if diamond<1:
-              print 'You don\'t have enough.'
-            if diamond>0:
-              choice=raw_input('How many to deposit:')
-              try:
-                if int(choice)<diamond+1:
-                  diamond-=int(choice)
-                  storage_diamond+=int(choice)
-                  print 'Current holding:'
-                  print 'Diamond(s) in storage:',storage_diamond
-                  print 'Diamond(s) in inventory:',diamond
-              except ValueError, TypeError:
-                print 'You need to enter a number.'
-          
-          move_on=raw_input('Hit enter to exit crafting:')
-          choice=''
-  if dev==True:
-    blah=raw_input("Hit enter to continue:")
 def loop4(s,other,numbers,price):
   #s = (True)Shows other stuff and stats
   global dirt,wood,rocks,water,clay,bowl,sticks
@@ -666,11 +209,11 @@ def loop4(s,other,numbers,price):
   if s==True:
     print 'Storage:'
     print '  Inventory Storage:',self_storage,'(qty of items)'
-    print '  Home storage:',home_storage,'(qty of items)'
-    print '  Inventory capacity:',self_int,'out of',self_storage
+    print '  Home Storage:',home_storage,'(qty of items)'
+    print '  Inventory Capacity:',self_int,'out of',self_storage
     print 'Stats:'
     print '  Stanima:',stanima,'(%)'
-    print '  Max_stanima',max_stanima,'(%)'
+    print '  Max Stanima',max_stanima,'(%)'
     print ''
     print 'Current money:',str(money)+' (cents)'
     print 'Current area:',current_surrounding
@@ -683,14 +226,14 @@ def dev_promt():
 p=True
 while p==True:
   clear()
-  print 'Current Version: 0.1.6, Test 1'
+  print 'Current Version: 0.1.6, Test 2'
   if dev==True:
     print 'Dev_options: Enabled\n'
   print 'Please read tips if this is the first time playing. Thank you!'
-  print '(1)Gather resources'
-  print '(2)Change location'
-  print '(3)Go back home'
-  print '(4)Crafting menu'
+  print '(1)Gather Resources'
+  print '(2)Change Location'
+  print '(3)Go Back Home'
+  print '(4)Crafting Menu'
   print '(5)Sleep'
   print '(6)Tips'
   print '(7)Exersice'
@@ -698,16 +241,18 @@ while p==True:
   print '(9)Mining'
   print '(10)Quests'
   print '(11)Buy'
-  print '(*)Show inventory'
+  print '(12)Cheat Codes'
+  print '(*)Show Inventory'
   print '\nOthers:'
-  print '(save)Save data'
+  print '(save)Save Data'
   print '(bye)Exit'
+  print '(updates)Show Patch Notes'
   if dev==True:
     print '\nDev tools:'
     print 'Dev_menu()'
     print 'Dev_var()'
     print 'Vars_beta\n'
-  print '\nTo get help type (help)'
+  print 'To get help type (help)'
   choice=raw_input('Choose an option or enter code:')
   if choice==dev_options:
     use=False
@@ -723,87 +268,107 @@ while p==True:
   clear()
   loop2()
   if choice == "1":
-    self_int=0
-    self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-    self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
-    #Water + Dirt = Clay
-    #Wood = house, water holder, storage
-    print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks'
-    choice=raw_input('What would you like to gather:')
-    loop2()
-    if choice == "1":
-      if dev==False:
-        if current_surrounding not in dirt_biomes:
-          print 'You must be in the forest to gather sticks.'
-      if current_surrounding in dirt_biomes or dev==True:
-        if self_storage<self_int+3:
-          print 'Your inventory is full.'
-          choice='blah'
+    loop=True
+    warn=False
+    loop_count=1
+    print 'To loop type (loop) or hit enter to continue.'
+    choice=raw_input('What do you choose:')
+    if choice == "loop":
+      try:
+        loop_count=int(raw_input('How many times:'))
+      except ValueError:
+        print 'System message: ValueError'
+        print 'Reason: A number was not entered.'
+    if choice is not "loop":
+      loop=False
+    for i in range(loop_count):
+      self_int=0
+      self_int+=wood+water+dirt+rocks+clay+bowl+sticks
+      self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
+      if self_int<self_storage+1:
+        warn=True
+        break
+      if self_int+1>self_storage:
+        #Water + Dirt = Clay
+        #Wood = house, water holder, storage
+        print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks'
+        choice=raw_input('What would you like to gather:')
+        loop2()
         if choice == "1":
-          if axe>0:
-            print 'Gathering wood...'
-            time.sleep(3)
-            wood+=3
-            print 'Gathered wood'
-            time.sleep(1)
-          if axe<1:
-            print 'You need more axe(s)'
-    if choice == "2":
-      if dev==False:
-        if current_surrounding not in water_biomes:
-          print 'You need to be near a lake or a river to gather water.'
-      if current_surrounding in water_biomes or dev==True:
-        if self_storage<self_int+2:
-          choice='blah'
+          if dev==False:
+            if current_surrounding not in dirt_biomes:
+              print 'You must be in the forest to gather sticks.'
+          if current_surrounding in dirt_biomes or dev==True:
+            if self_storage<self_int+3:
+              print 'Your inventory is full.'
+              choice='blah'
+            if choice == "1":
+              if axe>0:
+                print 'Gathering wood...'
+                time.sleep(3)
+                wood+=3
+                print 'Gathered wood'
+                time.sleep(1)
+              if axe<1:
+                print 'You need more axe(s)'
         if choice == "2":
-          print 'Gathering water...'
-          time.sleep(3)
-          water+=2
-          print 'Gathered water'
-          time.sleep(1)
-    if choice == "3":
-      if current_surrounding in dirt_biomes or dev==True:
-        if self_storage<self_int+2:
-          choice='blah'
+          if dev==False:
+            if current_surrounding not in water_biomes:
+              print 'You need to be near a lake or a river to gather water.'
+          if current_surrounding in water_biomes or dev==True:
+            if self_storage<self_int+2:
+              choice='blah'
+            if choice == "2":
+              print 'Gathering water...'
+              time.sleep(3)
+              water+=2
+              print 'Gathered water'
+              time.sleep(1)
         if choice == "3":
-          if shovel>0:
-            print 'Gathering dirt...'
-            time.sleep(3)
-            dirt+=2
-            print 'Gathered dirt'
-            time.sleep(1)
-          if shovel<1:
-            print 'You need more shovel(s)'
-      if dev==False:
-        if current_surrounding not in dirt_biomes:
-          print 'You must be in the forest to gather dirt.'
-    if choice == "4":
-      if current_surrounding in clay_biomes or current_surrounding in dirt_biomes or dev==True:
-        if self_storage<self_int+2:
-          choice = 'blah'
+          if current_surrounding in dirt_biomes or dev==True:
+            if self_storage<self_int+2:
+              choice='blah'
+            if choice == "3":
+              if shovel>0:
+                print 'Gathering dirt...'
+                time.sleep(3)
+                dirt+=2
+                print 'Gathered dirt'
+                time.sleep(1)
+              if shovel<1:
+                print 'You need more shovel(s)'
+          if dev==False:
+            if current_surrounding not in dirt_biomes:
+              print 'You must be in the forest to gather dirt.'
         if choice == "4":
-          print 'Gathering rocks...'
-          time.sleep(3)
-          rocks+=2
-          print 'Gathered 2 rocks.'
-          time.sleep(1)
-      if dev==False:
-        if current_surrounding not in clay_biomes or dirt_biomes:
-          print 'You must at clay mountian or the forest to gather rocks.'
-    if choice == "5":
-      if current_surrounding in dirt_biomes or dev==True:
-        if self_storage<self_int+1:
-          choice="blah"
+          if current_surrounding in clay_biomes or current_surrounding in dirt_biomes or dev==True:
+            if self_storage<self_int+2:
+              choice = 'blah'
+            if choice == "4":
+              print 'Gathering rocks...'
+              time.sleep(3)
+              rocks+=2
+              print 'Gathered 2 rocks.'
+              time.sleep(1)
+          if dev==False:
+            if current_surrounding not in clay_biomes or dirt_biomes:
+              print 'You must at clay mountian or the forest to gather rocks.'
         if choice == "5":
-          print 'Gathering sticks...'
-          time.sleep(3)
-          sticks+=2
-          print 'Gathered 2 sticks.'
-          time.sleep(1)
-      if dev==False:
-        if current_surrounding not in dirt_biomes:
-          print 'You must be in the forest to gather sticks.'
+          if current_surrounding in dirt_biomes or dev==True:
+            if self_storage<self_int+1:
+              choice="blah"
+            if choice == "5":
+              print 'Gathering sticks...'
+              time.sleep(3)
+              sticks+=2
+              print 'Gathered 2 sticks.'
+              time.sleep(1)
+          if dev==False:
+            if current_surrounding not in dirt_biomes:
+              print 'You must be in the forest to gather sticks.'
     choice=''
+    if warn==True:
+      print 'Your inventory is full.'
     move_on=raw_input('Hit enter to exit crafting:')
   if choice == "2":
     print 'Current location:',current_surrounding
@@ -961,9 +526,9 @@ while p==True:
     choice = ''
   if choice == "5":
     if dev==False:
-      if stanima==max_stanima:
+      if stanima+1>max_stanima:
         print 'You are not tired.'
-      if stanima<max_stanima:
+      if stanima<max_stanima+1:
         print 'Sleeping...'
         stanima1=max_stanima-stanima
         sleep_time=stanima1/3
@@ -978,6 +543,8 @@ while p==True:
         move_on=raw_input('Hit enter to exit sleep:')
     if dev==True:
       stanima=max_stanima
+      print 'Stanima reset to max.'
+      time.sleep(1)
     choice = ''
   if choice == "6":
     print 'Welcome to Brandon\'s game.'
@@ -1030,25 +597,29 @@ while p==True:
     choice = ''
   if choice == "7":
     if current_surrounding=="exercise mountian #1" or dev==True:
-      print 'Getting in the mood...'
-      time.sleep(2.5)
-      print 'Moving to the beat...'
-      time.sleep(2.5)
-      print 'Singing the lyrics...'
-      time.sleep(1)
-      print 'Never gonna give you up'
-      print 'Never gonna let you down'
-      print 'Never gonna run around and desert you'
-      print 'Never gonna make you cry'
-      print 'Never gonna say goodbye'
-      print 'Never gonna tell a lie and hurt you'
-      print 'By: Rick Astley'
-      print
-      print 'Stanima decreased by 30'
-      print 'Max_Stanima increased by 15'
-      stanima-=30
-      max_stanima+=15
-      print 'Recommended to go to sleep.'
+      if stanima<30 and dev==False:
+        print 'You are to tired to dance your heart away.'
+      if stanima>29 or dev==True:
+        print 'Getting in the mood...'
+        time.sleep(2.5)
+        print 'Moving to the beat...'
+        time.sleep(2.5)
+        print 'Singing the lyrics...'
+        time.sleep(1)
+        print 'Never gonna give you up'
+        print 'Never gonna let you down'
+        print 'Never gonna run around and desert you'
+        print 'Never gonna make you cry'
+        print 'Never gonna say goodbye'
+        print 'Never gonna tell a lie and hurt you'
+        print 'By: Rick Astley'
+        print 'All credit goes to Rick for these lyrics.'
+        print
+        print 'Stanima decreased by 30'
+        print 'Max_Stanima increased by 15'
+        stanima-=30
+        max_stanima+=15
+        print 'Recommended to go to sleep.'
     if current_surrounding is not "exercise mountian #1":
       print 'You need to travel to exersice mountian to use this function.'
     move_on=raw_input('Hit enter to exit exercise:')
@@ -1386,6 +957,8 @@ while p==True:
       print 'Nothing here currently...'
     if dev==True:
       hi=True
+      if sticks<5:
+        print 'Sorry, but you do not. Come back when you do.'
       if quest1==False:
         hi=False
         print 'Your first quest is to get me: 5 sticks'
@@ -1400,8 +973,6 @@ while p==True:
             sticks-=5
             money+=25
             quest1=True
-          if sticks<5:
-            print 'Sorry, but you do not. Come back when you do.'
         if choice == "no":
           print 'Okay then.'
       if quest2==False:
@@ -1413,14 +984,14 @@ while p==True:
           if choice == "yes":
             print 'Checking...'
             time.sleep(1)
+            if pickaxe<2:
+              print 'Sorry, but you do not. Come back when you do.'
             if pickaxe>1:
               print 'Congrats you finished your second quest!'
               print 'You got 32 money.'
               pickaxe-=2
               money+=32
               quest2=True
-            if pickaxe<2:
-              print 'Sorry, but you do not. Come back when you do.'
       if quest3==False:
         if hi==True:
           hi=False
@@ -1430,14 +1001,14 @@ while p==True:
           if choice == "yes":
             print "Checking..."
             time.sleep(1)
+            if wood<5:
+              print 'Sorry, but you do not. Come back when you do.'
             if wood>4:
               print 'Congrats you finished your third quest'
               print 'You got 30 money.'
               wood-=5
               money+=30
               quest3=True
-            if wood<5:
-              print 'Sorry, but you do not. Come back when you do.'
       if quest4==False:
         if hi==True:
           hi=False
@@ -1447,20 +1018,52 @@ while p==True:
           if choice == "yes":
             print 'Checking...'
             time.sleep(1)
+            if sticks<15:
+              print 'Sorry, but you do not. Come back when you do.'
             if sticks>14:
               print 'Congrats you finished your 4th quest'
               print 'You got 45 money'
               sticks-=15
               money+=45
               quest4=True
-            if sticks<15:
-              print 'Sorry, but you do not. Come back when you do.'
-      if quest4==False:
+      if quest5==False:
         if hi==True:
           hi=False
+          print 'Your 5th quest is to get me: 4 bowls'
+          print 'Reward: 35 money'
+          choice=raw_input('Do you have 4 bowls:').lower()
+          if choice == "yes":
+            print 'Checking...'
+            time.sleep(1)
+            if bowl<4:
+              print 'Sorry, but you do not. Come back when you do.'
+            if bowl>3:
+              print 'Congrats you finished your 5th quest'
+              print 'You got 45 money'
+              bowl-=4
+              money+=35
+              quest5=True
+      if quest6==False:
+        if hi==True:
+          hi=False
+          print 'Your 6th quest is to get me: 5 clay'
+          print 'Reward: 30 money'
+          choice=raw_input('Do you have 5 clay:').lower()
+          if choice == "yes":
+            print 'Checking...'
+            time.sleep(1)
+            if clay<5:
+              print 'Sorry, but you do not. Come back when you do.'
+            if clay>4:
+              print 'Congrats you finished your 6th quest'
+              print 'You got 30 money'
+              clay-=5
+              money+=30
+              quest6=True
       if quest1==True and quest2==True:
         if quest3==True and quest4==True:
-          print 'You have completed all of the quests.'
+          if quest5==True and quest6==True:
+            print 'You have completed all of the quests.'
     move_on=raw_input('Hit enter to exit quest:')
     choice=''
   if choice == "11":
@@ -1469,6 +1072,9 @@ while p==True:
     self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
     if self_int<self_storage+1:
       loop4(s=False,other=False,numbers=False,price=True)
+      print 'Storage capacity:'
+      print '  (17)More inventory storage'
+      print '  (18)More home storage'
       choice=raw_input('What would you like to buy:')
       if choice == "1":
         choice = raw_input('How many:')
@@ -1710,10 +1316,38 @@ while p==True:
         except ValueError:
           print 'System message: ValueError'
           print 'Reason: A number was not entered.'
+      if choice == "17":
+        print 'Price: 1 item = 3 money'
+        try:
+          choice = raw_input('How much more storage:')
+          if int(choice)*3>money:
+            print 'You don\'t have enough money'
+          if int(choice)*3<money+1:
+            self_storage+=int(choice)
+            money-=int(choice)*3
+            print 'Inventory Storage:',self_storage,'(qty of items)'
+        except ValueError:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
+      if choice == "18":
+        print 'Price: 1 item = 5 money'
+        try:
+          choice = raw_input('How much more storage:')
+          if int(choice)*5>money:
+            print 'You don\'t have enough money'
+          if int(choice)*5<money+1:
+            home_storage+=int(choice)
+            money-=int(choice)*5
+            print 'Home Storage:',home_storage,'(qty of items)'
+        except ValueError:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
       choice=''
     if self_int+1>self_storage:
       print 'Your inventory is at capacity.'
     move_on=raw_input('Hit enter to exit buy:')
+  if choice == "12":
+    print 'This page is empty.'
   if choice in exit_pos:
     print 'Goodbye.'
     p=False
@@ -1722,13 +1356,472 @@ while p==True:
     #clay,bowl,storage
     move_on=raw_input('Hit enter to exit bag:').lower()
     if move_on=="storage":
+      clear()
+      choice1=''
+      choice2=''
+      storage_int=0
+      storage_int+=storage_water+storage_wood+storage_dirt
+      storage_int+=storage_rocks+storage_clay+storage_bowl
+      storage_int+=storage_sticks+storage_pickaxe+storage_axe
+      storage_int+=storage_shovel
+      self_int=0
+      self_int+=wood+water+dirt+rocks+clay+bowl+sticks
+      self_int+=pickaxe+axe+shovel+coal+diamond+iron+gold
       if dev==True:
-        clear()
-        loop3()
-      if dev==False:
-        clear()
-        dev_promt()
-        move_on=raw_input('Hit enter to exit storage:')
+        print 'self_int:',self_int
+        print 'storage_int:',storage_int
+        print 'home_storage:',home_storage
+        print 'self_storage:',self_storage
+      if storage_int+1<home_storage+1:
+        if self_int+1>self_storage:
+          print 'Both Your Home and inventory are full. In order to use this function, you must remove some items.'
+          print '\nHint: Sell the things you don\'t need'
+        if self_int>self_storage+1:
+          print 'Your home storage is full. You can not add things to it. But, you may take things away.'
+          print '(1)Withdraw\n(2)Leave'
+          move_on=raw_input('1 or 2:').lower()
+          choice1='hi'
+          if move_on=="1":
+            choice2="1"
+          if move_on=="2":
+            choice1="wefhgef"
+        if choice1 is not 'hi':
+          if choice1 is not "wefhgef":
+            print '(1)Withdraw\n(2)Deposit\n(3)Leave'
+            choice2=raw_input("Choose one of the options:")
+            clear()
+            if choice2 == "1":
+              print 'Items stored:'
+              print '(1)Wood:',storage_wood,'(logs)'
+              print '(2)Water:',storage_water,'(oz)'
+              print '(3)Dirt:',storage_dirt,'(lbs)'
+              print '(4)Rocks:',storage_rocks,'(Qty)'
+              print '(5)Clay:',storage_clay,'(lbs)'
+              print '(6)Bowl:',storage_bowl,'(Qty)'
+              print '(7)Sticks:',storage_sticks,'(Qty)'
+              print '(8)Pickaxes:',storage_pickaxe,'(Qty)'
+              print '(9)Shovels:',storage_shovel,'(Qty)'
+              print '(10)Axes:',storage_axe,'(Qty)'
+              print '(11)Coal:',coal,'(Qty)'
+              print '(12)Iron:',iron,'(Qty)'
+              print '(13)Gold:',gold,'(Qty)'
+              print '(14)Diamond:',diamond,'(Qty)'
+              choice = raw_input('What would you like to withdraw:')
+              if choice == "1":
+                if storage_wood<1:
+                  print 'You don\'t have enough.'
+                if storage_wood>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_wood+1:
+                      wood+=int(choice)
+                      storage_wood-=int(choice)
+                      print 'Current holding:'
+                      print 'Wood in storage:',storage_wood
+                      print 'Wood in inventory:',wood
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "2":
+                if storage_water<1:
+                  print 'You don\'t have enough.'
+                if storage_water>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_water+1:
+                      water+=int(choice)
+                      storage_water-=int(choice)
+                      print 'Current holding:'
+                      print 'Water in storage:',storage_water
+                      print 'Water in inventory:',water
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "3":
+                if storage_dirt<1:
+                  print 'You don\'t have enough.'
+                if storage_dirt>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_dirt+1:
+                      dirt+=int(choice)
+                      storage_dirt-=int(choice)
+                      print 'Current holding:'
+                      print 'Dirt in storage:',storage_dirt
+                      print 'Dirt in inventory:',dirt
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "4":
+                if storage_rocks<1:
+                  print 'You don\'t have enough.'
+                if storage_rocks>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_rocks+1:
+                      rocks+=int(choice)
+                      storage_rocks-=int(choice)
+                      print 'Current holding:'
+                      print 'Rocks in storage:',storage_rocks
+                      print 'Rocks in inventory:',rocks
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "5":
+                if storage_clay<1:
+                  print 'You don\'t have enough.'
+                if storage_clay>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_clay+1:
+                      clay+=int(choice)
+                      storage_clay-=int(choice)
+                      print 'Current holding:'
+                      print 'Clay in storage:',storage_clay
+                      print 'Clay in inventory:',clay
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "7":
+                if storage_sticks<1:
+                  print 'You don\'t have enough.'
+                if storage_sticks>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_clay+1:
+                      clay+=int(choice)
+                      storage_clay-=int(choice)
+                      print 'Current holding:'
+                      print 'Sticks in storage:',storage_clay
+                      print 'Sticks in inventory:',clay
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "6":
+                if storage_bowl<1:
+                  print 'You don\'t have enough.'
+                if storage_bowl>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_bowl+1:
+                      bowl+=int(choice)
+                      storage_bowl-=int(choice)
+                      print 'Current holding:'
+                      print 'Bowl in storage:',storage_bowl
+                      print 'Bowl in inventory:',bowl
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "8":
+                if storage_pickaxe<1:
+                  print 'You don\'t have enough.'
+                if storage_pickaxe>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_pickaxe+1:
+                      pickaxe+=int(choice)
+                      storage_pickaxe-=int(choice)
+                      print 'Current holding:'
+                      print 'Pickaxe(s) in storage:',storage_pickaxe
+                      print 'Pickaxe(s) in inventory:',pickaxe
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "9":
+                if storage_shovel<1:
+                  print 'You don\'t have enough.'
+                if storage_shovel>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_shovel+1:
+                      shovel+=int(choice)
+                      storage_shovel-=int(choice)
+                      print 'Current holding:'
+                      print 'Shovel(s) in storage:',storage_shovel
+                      print 'Shovel(s) in inventory:',shovel
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "10":
+                if storage_axe<1:
+                  print 'You don\'t have enough.'
+                if storage_axe>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_axe+1:
+                      axe+=int(choice)
+                      storage_axe-=int(choice)
+                      print 'Current holding:'
+                      print 'Axe(s) in storage:',storage_axe
+                      print 'Axe(s) in inventory:',axe
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "11":
+                if storage_coal<1:
+                  print 'You don\'t have enough.'
+                if storage_coal>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_coal+1:
+                      coal+=int(choice)
+                      storage_coal-=int(choice)
+                      print 'Current holding:'
+                      print 'Coal in storage:',storage_coal
+                      print 'Coal in inventory:',coal
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "12":
+                if storage_iron<1:
+                  print 'You don\'t have enough.'
+                if storage_iron>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_iron+1:
+                      iron+=int(choice)
+                      storage_iron-=int(choice)
+                      print 'Current holding:'
+                      print 'Iron in storage:',storage_iron
+                      print 'Iron in inventory:',iron
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "13":
+                if storage_gold<1:
+                  print 'You don\'t have enough.'
+                if storage_gold>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_gold+1:
+                      gold+=int(choice)
+                      storage_gold-=int(choice)
+                      print 'Current holding:'
+                      print 'Gold in storage:',storage_gold
+                      print 'Gold in inventory:',gold
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "14":
+                if storage_diamond<1:
+                  print 'You don\'t have enough.'
+                if storage_diamond>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_diamond+1:
+                      diamond+=int(choice)
+                      storage_diamond-=int(choice)
+                      print 'Current holding:'
+                      print 'Diamond(s) in storage:',storage_diamond
+                      print 'Diamond(s) in inventory:',diamond
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              move_on=raw_input('Hit enter to exit crafting:')
+              choice=''
+            if choice2 == "2":
+              print 'You have:'
+              print '(1)Wood:',wood,'(logs)'
+              print '(2)Water:',water,'(oz)'
+              print '(3)Dirt:',dirt,'(lbs)'
+              print '(4)Rocks:',rocks,'(Qty)'
+              print '(5)Clay:',clay,'(lbs)'
+              print '(6)Bowl:',bowl,'(Qty)'
+              print '(7)Sticks:',sticks,'(Qty)'
+              print '(8)Pickaxes:',pickaxe,'(Qty)'
+              print '(9)Shovels:',shovel,'(Qty)'
+              print '(10)Axes:',axe,'(Qty)'
+              print '(11)Coal:',coal,'(Qty)'
+              print '(12)Iron:',iron,'(Qty)'
+              print '(13)Gold:',gold,'(Qty)'
+              print '(14)Diamond:',diamond,'(Qty)'
+              choice = raw_input('What would you like to deposite:')
+              if choice == "1":
+                if wood<1:
+                  print 'You don\'t have enough.'
+                if wood>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<wood+1:
+                      wood-=int(choice)
+                      storage_wood+=int(choice)
+                      print 'Current holding:'
+                      print 'Wood in storage:',storage_wood
+                      print 'Wood in inventory:',wood
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "2":
+                if water<1:
+                  print 'You don\'t have enough.'
+                if water>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<water+1:
+                      water-=int(choice)
+                      storage_water+=int(choice)
+                      print 'Current holding:'
+                      print 'Water in storage:',storage_water
+                      print 'Water in inventory:',water
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "3":
+                if dirt<1:
+                  print 'You don\'t have enough.'
+                if dirt>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<dirt+1:
+                      dirt-=int(choice)
+                      storage_dirt+=int(choice)
+                      print 'Current holding:'
+                      print 'Dirt in storage:',storage_dirt
+                      print 'Dirt in inventory:',dirt
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "4":
+                if rocks<1:
+                  print 'You don\'t have enough.'
+                if rocks>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<rocks+1:
+                      rocks-=int(choice)
+                      storage_rocks+=int(choice)
+                      print 'Current holding:'
+                      print 'Rock(s) in storage:',storage_rocks
+                      print 'Rock(s) in inventory:',rocks
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "5":
+                if clay<1:
+                  print 'You don\'t have enough.'
+                if clay>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<clay+1:
+                      clay-=int(choice)
+                      storage_clay+=int(choice)
+                      print 'Current holding:'
+                      print 'Clay in storage:',storage_clay
+                      print 'Clay in inventory:',clay
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "6":
+                if bowl<1:
+                  print 'You don\'t have enough.'
+                if bowl>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<bowl+1:
+                      bowl-=int(choice)
+                      storage_bowl+=int(choice)
+                      print 'Current holding:'
+                      print 'Bowl(s) in storage:',storage_bowl
+                      print 'Bowl(s) in inventory:',bowl
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "7":
+                if sticks<1:
+                  print 'You don\'t have enough.'
+                if sticks>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<sticks+1:
+                      sticks-=int(choice)
+                      storage_sticks+=int(choice)
+                      print 'Current holding:'
+                      print 'Stick(s) in storage:',storage_sticks
+                      print 'Stick(s) in inventory:',sticks
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "8":
+                if pickaxe<1:
+                  print 'You don\'t have enough.'
+                if pickaxe>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<pickaxe+1:
+                      pickaxe-=int(choice)
+                      storage_pickaxe+=int(choice)
+                      print 'Current holding:'
+                      print 'Pickaxe(s) in storage:',storage_pickaxe
+                      print 'Pickaxe(s) in inventory:',pickaxe
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "9":
+                if shovel<1:
+                  print 'You don\'t have enough.'
+                if shovel>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<shovel+1:
+                      shovel-=int(choice)
+                      storage_shovel+=int(choice)
+                      print 'Current holding:'
+                      print 'Shovel(s) in storage:',storage_shovel
+                      print 'Shovel(s) in inventory:',shovel
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "10":
+                if axe<1:
+                  print 'You don\'t have enough.'
+                if axe>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<axe+1:
+                      axe-=int(choice)
+                      storage_axe+=int(choice)
+                      print 'Current holding:'
+                      print 'Axe(s) in storage:',storage_axe
+                      print 'Axe(s) in inventory:',axe
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "11":
+                if coal<1:
+                  print 'You don\'t have enough.'
+                if coal>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<coal+1:
+                      coal-=int(choice)
+                      storage_coal+=int(choice)
+                      print 'Current holding:'
+                      print 'Coal in storage:',storage_coal
+                      print 'Coal in inventory:',coal
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "12":
+                if iron<1:
+                  print 'You don\'t have enough.'
+                if iron>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<iron+1:
+                      iron-=int(choice)
+                      storage_iron+=int(choice)
+                      print 'Current holding:'
+                      print 'Iron in storage:',storage_iron
+                      print 'Iron in inventory:',iron
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "13":
+                if gold<1:
+                  print 'You don\'t have enough.'
+                if gold>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<gold+1:
+                      gold-=int(choice)
+                      storage_gold+=int(choice)
+                      print 'Current holding:'
+                      print 'Gold in storage:',storage_gold
+                      print 'Gold in inventory:',gold
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "14":
+                if diamond<1:
+                  print 'You don\'t have enough.'
+                if diamond>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<diamond+1:
+                      diamond-=int(choice)
+                      storage_diamond+=int(choice)
+                      print 'Current holding:'
+                      print 'Diamond(s) in storage:',storage_diamond
+                      print 'Diamond(s) in inventory:',diamond
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+            if choice2 == "3":
+              clear()
+              print 'By!'
+      move_on=raw_input('Hit enter to exit storage:')
     choice = ''
   if choice == "save":
     #save.write('='+str()+'\n')
@@ -1800,13 +1893,15 @@ while p==True:
     save.write('sides='+str(sides)+'\n')
     save.write('money='+str(money)+'\n')
     save.write('stanima='+str(stanima)+' #Starting Max 100, Default 100\n')
-    save.write('max_stanima='+str(max_stanima)+'\n')
+    save.write('max_stanima='+str(max_stanima)+' #Default 130\n')
     save.write("exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']\n")
     save.write('#Quests\n')
     save.write('quest1='+str(quest1)+' #False=Not done\n')
     save.write('quest2='+str(quest2)+' #True=Done\n')
     save.write('quest3='+str(quest3)+'\n')
     save.write('quest4='+str(quest4)+'\n')
+    save.write('quest5='+str(quest5)+'\n')
+    save.write('quest6='+str(quest6)+'\n')
     save.write("\n#Though all cords = distance\n")
     save.write("#Lake = 27,0,?\n")
     save.write("#River = 10,0,?\n")
@@ -1851,7 +1946,32 @@ while p==True:
     save.write('buy_price_lapiz='+str(buy_price_lapiz)+'\n\n')
     save.write('# --- CODES IN GAME ---\n')
     save.write("dev_options='W3rS3cur3' #In the main menu enter this to activate.")
+    save.write('\ncheat_code=""')
+    save.write('\ncheat_amount='+str(cheat_amount)+'#The amount to add when using cheat code.')
     save.close()
+  if choice == "update" or choice == "updates":
+    print "Patch notes for 0.1.6\n"
+    print '1. Mining with dev mode no longer checks for a pickaxe.'
+    print '2. Added copper and lapiz to mining.'
+    print '3. Added copper and lapiz to inventory and other things that show it.'
+    print '4. Added copper and lapiz to save, along with price_ and buy_price vars.'
+    print '5. Added copper and lapiz to sell'
+    print '6. Added copper and lapiz to buy'
+    print '7. Removed "This page is in the works" on buy.'
+    print '8. Added auto repeat option for gather.'
+    print '9. You can now buy more storage for inventory and home. You cannot sell. I will implement that feature at the current moment.'
+    print '10. Uppercased some letters on inventory def, under storage tab.'
+    print '11. Added a updates function for players.'
+    print '12. Uppercased some letters on home screen.'
+    print '13. Sleep displays a message when using dev mode.'
+    print '14. Little tweak to save function.'
+    print '15. Added quest3 and quest4 to Dev_var function.'
+    print '16. Little tweak to Exercise lyrics.'
+    print '17. Exercise now checks for stanima. Stanima check is disabled with dev mode.'
+    print '18. Added quest5 and quest6 to quests.'
+    print '19. Added a cheat_code in vars.py. You can unlock cheat codes by playing quests.'
+    print '20. Tweaked storage.'
+    move_on=raw_input('Hit enter to exit updates:')
   if choice == "Dev_menu":
     if dev==True:
       if sides == True:
@@ -2102,8 +2222,12 @@ while p==True:
         print '(5)Stanima'
         print '(6)Max_stanima'
         print '\nQuest:'
-        print '(1)Quest1'
-        print '(2)Quest2'
+        print '(-)Quest1'
+        print '(-)Quest2'
+        print '(-)Quest3'
+        print '(-)Quest4'
+        print '(-)Quest5'
+        print '(-)Quest6'
         print '\nFor quest type quest1 or quest2. That\'s it.'
         print 'Type var then the number. \nUppercase/lowercase does not matter.'
         print 'Ex: Var 1'
@@ -2200,6 +2324,26 @@ while p==True:
           if choice=="false":
             quest2=False
           choice=''
+        if choice == "quest3":
+          if quest3==True:
+            print 'Currently set to: True'
+          if quest3==False:
+            print 'Currently set to: False'
+          choice = raw_input("True or False:").lower()
+          if choice=="true":
+            quest3=True
+          if choice=="false":
+            quest3=False
+        if choice == "quest4":
+          if quest4==True:
+            print 'Currently set to: True'
+          if quest4==False:
+            print 'Currently set to: False'
+          choice = raw_input("True or False:").lower()
+          if choice=="true":
+            quest4=True
+          if choice=="false":
+            quest4=False
   if choice == "vars_beta":
     if dev==True:
       if sides==True:
