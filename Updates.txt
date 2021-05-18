@@ -1,28 +1,42 @@
 User updates in this version.
-1. Mining with dev mode no longer checks for a pickaxe.
-2. Added copper and lapiz to mining.
-3. Added copper and lapiz to inventory and other things that show it.
-4. Added copper and lapiz to save, along with price_ and buy_price vars.
-5. Added copper and lapiz to sell
-6. Added copper and lapiz to buy
-7. Removed "This page is in the works" on buy.
+1. Added auto repeat option for gather.
+2. You can now buy more storage for inventory and home. You cannot sell. I will implement that feature at the current moment.
+3. Uppercased some letters on inventory def, under storage tab.
+4. Added a updates function for players.
+5. Uppercased some letters on home screen.
+6. Sleep displays a message when using dev mode.
+7. Little tweak to save function.
+8. Added quest3, quest4, quest5, and quest6 to Dev_var function.
+9. Little tweak to Exercise lyrics.
+10. Exercise now checks for stanima. Stanima check is disabled with dev mode.
+11. Added quest5 and quest6 to quests.
+12. Added a cheat_code in vars.py. You can unlock cheat codes by playing quests.
+13. Tweaked storage.
 
 Adding in next update.
-1. Auto repeat option for gather
-2. Adjust game setting to allow decimal money. Ex: 2.75 or 2.3
-3. Allow user to buy more self_storage(knows as capacity) in Buy
-4. Show exchange of each item on sell.
+1. Show exchange of each item on sell.
+3. Add zinc and cobalt to mining, sell, buy, inventory for end of version 0.1.6.
+4. Add copper and lapiz to storage.
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
+2. Change location. 5 choices for each area instead of 3 and add new areas.
+3. Change location. Allow players to choose which forest, lake, river, etc... To go to.
+4. Change location. Give each area names.
+5. Home. Maybe allow people to move their home. Time to move: 30 secs.
+6. Mining, sell, buy, inventory. Add zinc, cobalt, lead, mica, and manganese.
+7. Crafting Menu. Come up with new ideas.
+8. Donation function. Gives rewards for every 15 money donated.
+9. Show donated_money in inventory, under stats.
 
 Unknown updated: #Might do. Not sure right now.
-1. Different strength tools.
+1. Different strength tools or upgrable tools.
 2. Ability to use items. Used for now to make a home. And expand storage.
 3. Health
 4. Add home appliances such as lights and a heater.
 5. Give home a power source and the ability to store power.
-6. Upgradable tools
+6. Adjust game setting to allow decimal money. Ex: 2.75 or 2.3
+7. A story function. Complete quests to unlock more of the story.
 
 Hint: You can look in vars.py file for the code. AT THE BOTTOM.
 Dev options. (FOR TESTING) -- (CODE MUST BE GIVEN TO ACTIVATE)
