@@ -11,9 +11,9 @@ sticks=10 #Qty
 coal=0
 iron=0
 gold=0
+diamond=0
 copper=0
 lapiz=0
-diamond=0
 #Home storage vars
 storage_wood=0
 storage_water=0
@@ -65,13 +65,15 @@ dirt_biomes=['forest #1','forest #2','forest #3']
 sides=False
 money=25
 stanima=100 #Starting Max 100, Default 100
-max_stanima=130
+max_stanima=130 #Default 130
 exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
 #Quests
 quest1=False #False=Not done
 quest2=False #True=Done
 quest3=False
 quest4=False
+quest5=False
+quest6=False
 
 #Though all cords = distance
 #Lake = 27,0,?
@@ -97,8 +99,8 @@ price_coal=1
 price_iron=3
 price_gold=5
 price_diamond=7
-price_copper=0
-price_lapiz=0
+price_copper=2
+price_lapiz=3
 
 #Buy prices
 buy_price_wood=3
@@ -115,8 +117,10 @@ buy_price_coal=2
 buy_price_iron=4
 buy_price_gold=6
 buy_price_diamond=8
-buy_price_coppper=0
-buy_price_lapiz=0
+buy_price_coppper=5
+buy_price_lapiz=6
 
 # --- CODES IN GAME ---
 dev_options='W3rS3cur3' #In the main menu enter this to activate.
+cheat_code=""
+cheat_amount=25#The amount to add when using cheat code.
