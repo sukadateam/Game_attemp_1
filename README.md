@@ -1,4 +1,4 @@
-# Game_attempt_1
+# Surnia
 This is the first game I'm uploading.
 The developer of this game is Brandon Robinson.
 
