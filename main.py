@@ -1,11 +1,28 @@
-#Version 0.1.6 Test 2 is out!
+#Version 0.1.6 Test 3 is out!
 import time,os,random
 dev=False#Default False
 if dev==True:
   from vars_beta import *
 if dev==False:
   from vars import *
+if cheat_amount>25:
+  cheat_amount=25
+if dev==True:
+  if set_cheatcode==True:
+    cheat_wood=True
+    cheat_dirt=True
+    cheat_water=True
+    cheat_rocks=True
+    cheat_all=True
+  if set_quest==True:
+    quest1=True
+    quest2=True
+    quest3=True
+    quest4=True
+    quest5=True
+    quest6=True
 try:
+  cheat_code=cheat_code.lower()
   if cheat_code == "wood_you?":
     wood+=cheat_amount
   if cheat_code == "i'm_special":
@@ -132,6 +149,12 @@ def loop4(s,other,numbers,price):
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print side2+'Lapiz:',str(lapiz)+'     Price:',buy_price_lapiz
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Zinc:',str(zinc)+'     Price:',buy_price_zinc
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Cobalt:',str(zinc)+'    Price:',buy_price_cobalt
   if numbers==True:
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
@@ -184,6 +207,12 @@ def loop4(s,other,numbers,price):
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print side2+'Lapiz:',lapiz,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Zinc:',zinc,'(Qty)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Cobalt',cobalt,'(Qty)'
   if numbers==False:
     if price==False:
       print '  Wood:',wood,'(logs)'
@@ -206,6 +235,8 @@ def loop4(s,other,numbers,price):
     print '  Diamonds:',diamond,'(Qty)'
     print '  Copper:',copper,'(Qty)'
     print '  Lapiz:',lapiz,'(Qty)'
+    print '  Zinc:',zinc,'(Qty)'
+    print '  Cobalt:',cobalt,'(Qty)'
   if s==True:
     print 'Storage:'
     print '  Inventory Storage:',self_storage,'(qty of items)'
@@ -213,7 +244,8 @@ def loop4(s,other,numbers,price):
     print '  Inventory Capacity:',self_int,'out of',self_storage
     print 'Stats:'
     print '  Stanima:',stanima,'(%)'
-    print '  Max Stanima',max_stanima,'(%)'
+    print '  Max Stanima:',max_stanima,'(%)'
+    print '  Donations:',donated_money,'(cents)'
     print ''
     print 'Current money:',str(money)+' (cents)'
     print 'Current area:',current_surrounding
@@ -224,12 +256,12 @@ def dev_promt():
   print 'You must activate Dev_options to use this. This lock will be removed in future updates. Go to vars.py to see how to enable dev_options. It\'s at the bottom.'
 #move_on=raw_input('Hit enter to exit crafting:')
 p=True
+cheap=False
 while p==True:
   clear()
-  print 'Current Version: 0.1.6, Test 2'
+  print 'Current Version: 0.1.6, Test 3\n(0.1.6 Final)'
   if dev==True:
-    print 'Dev_options: Enabled\n'
-  print 'Please read tips if this is the first time playing. Thank you!'
+    print 'Dev_options: Enabled'
   print '(1)Gather Resources'
   print '(2)Change Location'
   print '(3)Go Back Home'
@@ -242,6 +274,7 @@ while p==True:
   print '(10)Quests'
   print '(11)Buy'
   print '(12)Cheat Codes'
+  print '(13)Donate'
   print '(*)Show Inventory'
   print '\nOthers:'
   print '(save)Save Data'
@@ -251,7 +284,7 @@ while p==True:
     print '\nDev tools:'
     print 'Dev_menu()'
     print 'Dev_var()'
-    print 'Vars_beta\n'
+    print 'Vars_beta()\n'
   print 'To get help type (help)'
   choice=raw_input('Choose an option or enter code:')
   if choice==dev_options:
@@ -285,10 +318,10 @@ while p==True:
       self_int=0
       self_int+=wood+water+dirt+rocks+clay+bowl+sticks
       self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
-      if self_int<self_storage+1:
+      if self_int+1>self_storage:
         warn=True
         break
-      if self_int+1>self_storage:
+      if self_int<self_storage+1:
         #Water + Dirt = Clay
         #Wood = house, water holder, storage
         print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks'
@@ -953,117 +986,114 @@ while p==True:
     move_on=raw_input('Hit enter to exit mining:')
     choice = ''
   if choice == "10":
-    if dev==False:
-      print 'Nothing here currently...'
-    if dev==True:
-      hi=True
-      if sticks<5:
-        print 'Sorry, but you do not. Come back when you do.'
-      if quest1==False:
+    hi=True
+    if sticks<5:
+      print 'Sorry, but you do not. Come back when you do.'
+    if quest1==False:
+      hi=False
+      print 'Your first quest is to get me: 5 sticks'
+      print 'Reward: 25 money'
+      choice=raw_input('Do you have 5 sticks:').lower()
+      if choice == "yes":
+        print 'Checking...'
+        time.sleep(1)
+        if sticks>4:
+          print 'Congrats you finished your first quest!'
+          print 'You got 25 money.'
+          sticks-=5
+          money+=25
+          quest1=True
+      if choice == "no":
+        print 'Okay then.'
+    if quest2==False:
+      if hi==True:
         hi=False
-        print 'Your first quest is to get me: 5 sticks'
-        print 'Reward: 25 money'
-        choice=raw_input('Do you have 5 sticks:').lower()
+        print 'Your second quest is to get me: 2 pickaxe(s)'
+        print 'Reward: 32 money'
+        choice=raw_input('Do you have 2 pickaxe(s)').lower()
         if choice == "yes":
           print 'Checking...'
           time.sleep(1)
-          if sticks>4:
-            print 'Congrats you finished your first quest!'
-            print 'You got 25 money.'
-            sticks-=5
-            money+=25
-            quest1=True
-        if choice == "no":
-          print 'Okay then.'
-      if quest2==False:
-        if hi==True:
-          hi=False
-          print 'Your second quest is to get me: 2 pickaxe(s)'
-          print 'Reward: 32 money'
-          choice=raw_input('Do you have 2 pickaxe(s)').lower()
-          if choice == "yes":
-            print 'Checking...'
-            time.sleep(1)
-            if pickaxe<2:
-              print 'Sorry, but you do not. Come back when you do.'
-            if pickaxe>1:
-              print 'Congrats you finished your second quest!'
-              print 'You got 32 money.'
-              pickaxe-=2
-              money+=32
-              quest2=True
-      if quest3==False:
-        if hi==True:
-          hi=False
-          print 'Your third quest is to get me: 5 wood'
-          print 'Reward: 30 money'
-          choice=raw_input('Do you have 5 wood:').lower()
-          if choice == "yes":
-            print "Checking..."
-            time.sleep(1)
-            if wood<5:
-              print 'Sorry, but you do not. Come back when you do.'
-            if wood>4:
-              print 'Congrats you finished your third quest'
-              print 'You got 30 money.'
-              wood-=5
-              money+=30
-              quest3=True
-      if quest4==False:
-        if hi==True:
-          hi=False
-          print 'Your 4th quest is to get me: 15 sticks'
-          print 'Reward: 45 money'
-          choice=raw_input('Do you have 15 sticks:').lower()
-          if choice == "yes":
-            print 'Checking...'
-            time.sleep(1)
-            if sticks<15:
-              print 'Sorry, but you do not. Come back when you do.'
-            if sticks>14:
-              print 'Congrats you finished your 4th quest'
-              print 'You got 45 money'
-              sticks-=15
-              money+=45
-              quest4=True
-      if quest5==False:
-        if hi==True:
-          hi=False
-          print 'Your 5th quest is to get me: 4 bowls'
-          print 'Reward: 35 money'
-          choice=raw_input('Do you have 4 bowls:').lower()
-          if choice == "yes":
-            print 'Checking...'
-            time.sleep(1)
-            if bowl<4:
-              print 'Sorry, but you do not. Come back when you do.'
-            if bowl>3:
-              print 'Congrats you finished your 5th quest'
-              print 'You got 45 money'
-              bowl-=4
-              money+=35
-              quest5=True
-      if quest6==False:
-        if hi==True:
-          hi=False
-          print 'Your 6th quest is to get me: 5 clay'
-          print 'Reward: 30 money'
-          choice=raw_input('Do you have 5 clay:').lower()
-          if choice == "yes":
-            print 'Checking...'
-            time.sleep(1)
-            if clay<5:
-              print 'Sorry, but you do not. Come back when you do.'
-            if clay>4:
-              print 'Congrats you finished your 6th quest'
-              print 'You got 30 money'
-              clay-=5
-              money+=30
-              quest6=True
-      if quest1==True and quest2==True:
-        if quest3==True and quest4==True:
-          if quest5==True and quest6==True:
-            print 'You have completed all of the quests.'
+          if pickaxe<2:
+            print 'Sorry, but you do not. Come back when you do.'
+          if pickaxe>1:
+            print 'Congrats you finished your second quest!'
+            print 'You got 32 money.'
+            pickaxe-=2
+            money+=32
+            quest2=True
+    if quest3==False:
+      if hi==True:
+        hi=False
+        print 'Your third quest is to get me: 5 wood'
+        print 'Reward: 30 money'
+        choice=raw_input('Do you have 5 wood:').lower()
+        if choice == "yes":
+          print "Checking..."
+          time.sleep(1)
+          if wood<5:
+            print 'Sorry, but you do not. Come back when you do.'
+          if wood>4:
+            print 'Congrats you finished your third quest'
+            print 'You got 30 money.'
+            wood-=5
+            money+=30
+            quest3=True
+    if quest4==False:
+      if hi==True:
+        hi=False
+        print 'Your 4th quest is to get me: 15 sticks'
+        print 'Reward: 45 money'
+        choice=raw_input('Do you have 15 sticks:').lower()
+        if choice == "yes":
+          print 'Checking...'
+          time.sleep(1)
+          if sticks<15:
+            print 'Sorry, but you do not. Come back when you do.'
+          if sticks>14:
+            print 'Congrats you finished your 4th quest'
+            print 'You got 45 money'
+            sticks-=15
+            money+=45
+            quest4=True
+    if quest5==False:
+      if hi==True:
+        hi=False
+        print 'Your 5th quest is to get me: 4 bowls'
+        print 'Reward: 35 money'
+        choice=raw_input('Do you have 4 bowls:').lower()
+        if choice == "yes":
+          print 'Checking...'
+          time.sleep(1)
+          if bowl<4:
+            print 'Sorry, but you do not. Come back when you do.'
+          if bowl>3:
+            print 'Congrats you finished your 5th quest'
+            print 'You got 45 money'
+            bowl-=4
+            money+=35
+            quest5=True
+    if quest6==False:
+      if hi==True:
+        hi=False
+        print 'Your 6th quest is to get me: 5 clay'
+        print 'Reward: 30 money'
+        choice=raw_input('Do you have 5 clay:').lower()
+        if choice == "yes":
+          print 'Checking...'
+          time.sleep(1)
+          if clay<5:
+            print 'Sorry, but you do not. Come back when you do.'
+          if clay>4:
+            print 'Congrats you finished your 6th quest'
+            print 'You got 30 money'
+            clay-=5
+            money+=30
+            quest6=True
+    if quest1==True and quest2==True:
+      if quest3==True and quest4==True:
+        if quest5==True and quest6==True:
+          print 'You have completed all of the quests.'
     move_on=raw_input('Hit enter to exit quest:')
     choice=''
   if choice == "11":
@@ -1347,12 +1377,132 @@ while p==True:
       print 'Your inventory is at capacity.'
     move_on=raw_input('Hit enter to exit buy:')
   if choice == "12":
-    print 'This page is empty.'
+    print 'Here are cheat code you can buy. Each can be used 2 times. You can buy as many as you want!'
+    print '(1)Wood cheat code:  30 cents'
+    print '(1)Dirt cheat code:  15 cents'
+    print '(3)Water cheat code: 15 cents'
+    print '(4)Rocks cheat code: 15 cents'
+    print '(5)ALl in one cheat code: 65 cents'
+    print '(*)Use cheat code\n'
+    choice=raw_input('Which item:')
+    if choice=="1":
+      if cheat_wood==True:
+        move_on=money#Setting a temporary var
+        if money<30 and dev==False:
+          print 'You don\'t have enough cents.'
+        if money>29 or dev==True:
+          print 'Cents before purchase:',move_on
+          print 'Cents after purchase:',money
+          cheat_wood_int+=2
+    if choice=="2":
+      if cheat_dirt==True:
+        move_on=money#Setting a temporary var
+        if money<15 and dev==False:
+          print 'You don\'t have enough cents.'
+        if money>14 or dev==True:
+          print 'Cents before purchase:',move_on
+          print 'Cents after purchase:',money
+          cheat_dirt_int+=2
+    if choice=="3":
+      if cheat_water==True:
+        move_on=money#Setting a temporary var
+        if money<15 and dev==False:
+          print 'You don\'t have enough cents.'
+        if money>14 or dev==True:
+          print 'Cents before purchase:',move_on
+          print 'Cents after purchase:',money
+          cheat_water_int+=2
+    if choice=="4":
+      if cheat_rocks==True:
+        move_on=money#Setting a temporary var
+        if money<15 and dev==False:
+          print 'You don\'t have enough cents.'
+        if money>14 or dev==True:
+          print 'Cents before purchase:',move_on
+          print 'Cents after purchase:',money
+          cheat_rocks_int+=2
+    if choice=="5":
+      if cheat_all==True:
+        move_on=money#Setting a temporary var
+        if money<65 and dev==False:
+          print 'You don\'t have enough cents.'
+        if money>64 or dev==True:
+          print 'Cents before purchase:',move_on
+          print 'Cents after purchase:',money
+          cheat_all_int+=2
+    if choice=="*":
+      cheat_code=raw_input('Cheat code:')
+      if cheat_code == "wood_you?":
+        wood+=cheat_amount
+        print 'Cheat code applied.'
+      elif cheat_code == "i'm_special":
+        dirt+=cheat_amount
+        print 'Cheat code applied.'
+      elif cheat_code == "voodoo_magic":
+        water+=cheat_amount
+        print 'Cheat code applied.'
+      elif cheat_code == "hello_world!":
+        rocks+=cheat_amount
+        print 'Cheat code applied.'
+      elif cheat_code == "all_of_the_above":
+        wood+=cheat_amount
+        dirt+=cheat_amount
+        water+=cheat_amount
+        rocks+=cheat_amount
+        print 'Cheat code applied.'
+      else:
+        print 'Incorrect cheat code.'
+    choice=''
+    move_on=''#Clearing temporary var
+    move_on=raw_input('Hit enter to exit cheat codes:')
+  if choice == "13":
+    print 'To see reward list: rewards'
+    print 'To donate: donate'
+    print 'To claim rewards: claim'
+    choice=raw_input('Which one:')
+    if choice == "claim":
+      hi=True
+      clear()
+      if donated_money>14:
+        if donated_tf[0]==0:
+          donated_tf[0]=1
+          print 'Reward: 5 cobalt'
+          hi=False
+      if donated_money>29:
+        if donated_tf[1]==0:
+          donated_tf[1]=1
+          print 'Reward: 3 pickaxe(s)'
+          hi=False
+      if hi==True:
+        print 'Nothing to claim.'
+    if choice == "rewards" or choice == "reward":
+      clear()
+      print 'Donated = Lifetime donations\n'
+      print 'Donated:      Reward:'
+      print '15 cents      5 cobalt'
+      print '30 cents      3 pickaxe(s)'
+    if choice == "donate":
+      clear()
+      choice=raw_input('How much to donate:')
+      try:
+        if int(choice)<money+1:
+          print 'Sorry your card was declined'
+        if int(choice)+1>money:
+          money-=int(choice)
+          donated_money+=int(choice)
+          print 'Money donated:',int(choice)
+          print 'Lifetime donations:',donated_money
+      except ValueError:
+        print 'System message: ValueError'
+        print 'Reason: A number was not entered.'
+    choice=''
+    move_on=raw_input('Hit enter to exit donate:')
   if choice in exit_pos:
     print 'Goodbye.'
     p=False
   if choice == "*":
     loop4(s=True,other=True,numbers=False,price=False)
+    print '\nOptions: (storage), (leave) or (cheats)'
     #clay,bowl,storage
     move_on=raw_input('Hit enter to exit bag:').lower()
     if move_on=="storage":
@@ -1363,10 +1513,11 @@ while p==True:
       storage_int+=storage_water+storage_wood+storage_dirt
       storage_int+=storage_rocks+storage_clay+storage_bowl
       storage_int+=storage_sticks+storage_pickaxe+storage_axe
-      storage_int+=storage_shovel
+      storage_int+=storage_shovel+storage_copper+storage_lapiz
+      storage_int+=storage_coal+storage_iron+storage_gold+storage_diamond
       self_int=0
       self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-      self_int+=pickaxe+axe+shovel+coal+diamond+iron+gold
+      self_int+=pickaxe+axe+shovel+coal+diamond+iron+gold+copper+lapiz
       if dev==True:
         print 'self_int:',self_int
         print 'storage_int:',storage_int
@@ -1406,6 +1557,8 @@ while p==True:
               print '(12)Iron:',iron,'(Qty)'
               print '(13)Gold:',gold,'(Qty)'
               print '(14)Diamond:',diamond,'(Qty)'
+              print '(15)Copper:',copper,'(Qty)'
+              print '(16)Lapiz:',lapiz,'(Qty)'
               choice = raw_input('What would you like to withdraw:')
               if choice == "1":
                 if storage_wood<1:
@@ -1603,6 +1756,34 @@ while p==True:
                       print 'Diamond(s) in inventory:',diamond
                   except ValueError, TypeError:
                     print 'You need to enter a number.'
+              if choice == "15":
+                if storage_copper<1:
+                  print 'You don\'t have enough.'
+                if storage_copper>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_copper+1:
+                      copper+=int(choice)
+                      storage_copper-=int(choice)
+                      print 'Current holding:'
+                      print 'Copper in storage:',storage_copper
+                      print 'Copper in inventory:',copper
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "16":
+                if storage_lapiz<1:
+                  print 'You don\'t have enough.'
+                if storage_lapiz>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_lapiz+1:
+                      lapiz+=int(choice)
+                      storage_lapiz-=int(choice)
+                      print 'Current holding:'
+                      print 'Lapiz in storage:',storage_lapiz
+                      print 'Lapiz in inventory:',lapiz
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
               move_on=raw_input('Hit enter to exit crafting:')
               choice=''
             if choice2 == "2":
@@ -1621,6 +1802,8 @@ while p==True:
               print '(12)Iron:',iron,'(Qty)'
               print '(13)Gold:',gold,'(Qty)'
               print '(14)Diamond:',diamond,'(Qty)'
+              print '(15)Copper:',copper,'(Qty)'
+              print '(16)Lapiz:',lapiz,'(Qty)'
               choice = raw_input('What would you like to deposite:')
               if choice == "1":
                 if wood<1:
@@ -1818,11 +2001,54 @@ while p==True:
                       print 'Diamond(s) in inventory:',diamond
                   except ValueError, TypeError:
                     print 'You need to enter a number.'
+              if choice == "15":
+                if copper<1:
+                  print 'You don\'t have enough.'
+                if copper>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<copper+1:
+                      copper-=int(choice)
+                      storage_copper+=int(choice)
+                      print 'Current holding:'
+                      print 'Copper in storage:',storage_copper
+                      print 'Copper in inventory:',copper
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "16":
+                if lapiz<1:
+                  print 'You don\'t have enough.'
+                if lapiz>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<lapiz+1:
+                      lapiz-=int(choice)
+                      storage_lapiz+=int(choice)
+                      print 'Current holding:'
+                      print 'Lapiz in storage:',storage_lapiz
+                      print 'Lapiz in inventory:',lapiz
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
             if choice2 == "3":
               clear()
               print 'By!'
-      move_on=raw_input('Hit enter to exit storage:')
+    if move_on=="cheats":
+      if cheat_wood==True:
+        print "\nWood: wood_you?"
+      if cheat_dirt==True:
+        print "Dirt: i'm special"
+      if cheat_water==True:
+        print 'Water: voodoo_magic'
+      if cheat_rocks==True:
+        print 'Rocks: hello_world!'
+      if cheat_all==True:
+        print 'All: all_of_the_above'
+      if cheat_all==False and cheat_rocks==False:
+        if cheat_water==False and cheat_dirt==False:
+          if cheat_wood==False:
+            print 'You have not unlocked any cheat codes yet.'
     choice = ''
+    move_on=raw_input('Hit enter to exit storage:')
   if choice == "save":
     #save.write('='+str()+'\n')
     save=file('vars.py','w')
@@ -1853,6 +2079,14 @@ while p==True:
     save.write('storage_pickaxe='+str(storage_pickaxe)+'\n')
     save.write('storage_shovel='+str(storage_shovel)+'\n')
     save.write('storage_axe='+str(storage_axe)+'\n')
+    save.write('storage_coal='+str(storage_coal)+'\n')
+    save.write('storage_iron='+str(storage_iron)+'\n')
+    save.write('storage_gold='+str(storage_gold)+'\n')
+    save.write('storage_diamond='+str(storage_diamond)+'\n')
+    save.write('storage_copper='+str(storage_copper)+'\n')
+    save.write('storage_lapiz='+str(storage_lapiz)+'\n')
+    save.write('storage_zinc='+str(storage_zinc)+'\n')
+    save.write('storage_cobalt='+str(storage_cobalt)+'\n')
     save.write('#Storage\n')
     save.write('self_storage='+str(self_storage)+' #Qty of items\n')
     save.write('home_storage='+str(home_storage)+' #Qty of items\n')
@@ -1895,6 +2129,8 @@ while p==True:
     save.write('stanima='+str(stanima)+' #Starting Max 100, Default 100\n')
     save.write('max_stanima='+str(max_stanima)+' #Default 130\n')
     save.write("exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']\n")
+    save.write('donated_money='+str(donated_money)+'\n')
+    save.write('donated_tf=['+str(donated_tf[0])+','+str(donated_tf[1])+'] #0=False, 1=True. Items are in order on donate/rewards\n')
     save.write('#Quests\n')
     save.write('quest1='+str(quest1)+' #False=Not done\n')
     save.write('quest2='+str(quest2)+' #True=Done\n')
@@ -1902,6 +2138,18 @@ while p==True:
     save.write('quest4='+str(quest4)+'\n')
     save.write('quest5='+str(quest5)+'\n')
     save.write('quest6='+str(quest6)+'\n')
+    save.write('#Uses on cheat codes\n')
+    save.write('cheat_wood_int='+str(cheat_wood_int)+'\n')
+    save.write('cheat_dirt_int='+str(cheat_dirt_int)+'\n')
+    save.write('cheat_water_int='+str(cheat_water_int)+'\n')
+    save.write('cheat_rocks_int='+str(cheat_rocks_int)+'\n')
+    save.write('cheat_all_int='+str(cheat_all_int)+'\n')
+    save.write('#Cheats unlocked\n')
+    save.write('cheat_wood='+str(cheat_wood)+'\n')
+    save.write('cheat_dirt='+str(cheat_dirt)+'\n')
+    save.write('cheat_water='+str(cheat_water)+'\n')
+    save.write('cheat_rocks='+str(cheat_rocks)+'\n')
+    save.write('cheat_all='+str(cheat_all)+'\n')
     save.write("\n#Though all cords = distance\n")
     save.write("#Lake = 27,0,?\n")
     save.write("#River = 10,0,?\n")
@@ -1926,8 +2174,10 @@ while p==True:
     save.write('price_gold='+str(price_gold)+'\n')
     save.write('price_diamond='+str(price_diamond)+'\n')
     save.write('price_copper='+str(price_copper)+'\n')
-    save.write('price_lapiz='+str(price_lapiz)+'\n\n')
-    save.write('#Buy prices\n')
+    save.write('price_lapiz='+str(price_lapiz)+'\n')
+    save.write('price_zinc='+str(price_zinc)+'\n')
+    save.write('price_cobalt='+str(price_cobalt)+'\n')
+    save.write('\n#Buy prices\n')
     save.write('buy_price_wood='+str(buy_price_wood)+'\n')
     save.write('buy_price_dirt='+str(buy_price_dirt)+'\n')
     save.write('buy_price_water='+str(buy_price_water)+'\n')
@@ -1942,45 +2192,43 @@ while p==True:
     save.write('buy_price_iron='+str(buy_price_iron)+'\n')
     save.write('buy_price_gold='+str(buy_price_gold)+'\n')
     save.write('buy_price_diamond='+str(buy_price_diamond)+'\n')
-    save.write('buy_price_coppper='+str(buy_price_copper)+'\n')
-    save.write('buy_price_lapiz='+str(buy_price_lapiz)+'\n\n')
-    save.write('# --- CODES IN GAME ---\n')
+    save.write('buy_price_copper='+str(buy_price_copper)+'\n')
+    save.write('buy_price_lapiz='+str(buy_price_lapiz)+'\n')
+    save.write('buy_price_zinc='+str(buy_price_zinc)+'\n')
+    save.write('buy_price_cobalt='+str(buy_price_cobalt)+'\n')
+    save.write('\n# --- CODES IN GAME ---\n')
     save.write("dev_options='W3rS3cur3' #In the main menu enter this to activate.")
     save.write('\ncheat_code=""')
-    save.write('\ncheat_amount='+str(cheat_amount)+'#The amount to add when using cheat code.')
+    save.write('\ncheat_amount='+str(cheat_amount)+'#The amount to add when using cheat code. #MAX IS 25 items')
     save.close()
   if choice == "update" or choice == "updates":
     print "Patch notes for 0.1.6\n"
     print '1. Mining with dev mode no longer checks for a pickaxe.'
-    print '2. Added copper and lapiz to mining.'
-    print '3. Added copper and lapiz to inventory and other things that show it.'
-    print '4. Added copper and lapiz to save, along with price_ and buy_price vars.'
-    print '5. Added copper and lapiz to sell'
-    print '6. Added copper and lapiz to buy'
-    print '7. Removed "This page is in the works" on buy.'
-    print '8. Added auto repeat option for gather.'
-    print '9. You can now buy more storage for inventory and home. You cannot sell. I will implement that feature at the current moment.'
-    print '10. Uppercased some letters on inventory def, under storage tab.'
-    print '11. Added a updates function for players.'
-    print '12. Uppercased some letters on home screen.'
-    print '13. Sleep displays a message when using dev mode.'
-    print '14. Little tweak to save function.'
-    print '15. Added quest3 and quest4 to Dev_var function.'
-    print '16. Little tweak to Exercise lyrics.'
-    print '17. Exercise now checks for stanima. Stanima check is disabled with dev mode.'
-    print '18. Added quest5 and quest6 to quests.'
-    print '19. Added a cheat_code in vars.py. You can unlock cheat codes by playing quests.'
-    print '20. Tweaked storage.'
+    print '2. Added copper and lapiz to mining, inventory, save, sell, and buy.'
+    print '3. Removed the message "This page is in the works" on buy.'
+    print '4. Added auto repeat option for gather. Kinks are still being thought out.'
+    print '5. You can now buy more storage for inventory and home. You cannot sell it though.'
+    print '6. Fixed a couple of grammer issues.'
+    print '7. Added a updates function for players. This shows you patch notes for official version. Not Test versions.'
+    print '8. Updated all of dev features. No info avaible.'
+    print '9. Little tweak to Exercise lyrics when moving to the beat.'
+    print '10. Exercise now checks for stanima. Stanima check is disabled with dev mode.'
+    print '11. Added quest5 and quest6 to quests.'
+    print '12. Fixed bug where gather resources will think your inventory is full.'
+    print '13. Added goodies to storage. For somereason my mind gapped and didn\'t add this.'
+    print '14. Added cheat codes and donate function.'
+    print '15. Inventory now has a list of option inside of it. These include storage, leave, and cheats.'
     move_on=raw_input('Hit enter to exit updates:')
   if choice == "Dev_menu":
     if dev==True:
       if sides == True:
         print '(1)Give - Gives free stuff'
         print '(2)Remove - Removes stuff'
+        print '(3)Everything is cheap'
         choice = raw_input('Choose an option:')
         if choice == "1":
           clear()
-          loop4(s=False,other=False,numbers=True)
+          loop4(s=False,other=False,numbers=True,price=False)
           choice=raw_input('Choose an option:')
           if choice == "1":
             choice = raw_input('How many:')
@@ -2040,7 +2288,7 @@ while p==True:
             choice = ''
         if choice == "2":
           clear()
-          loop4(s=False,other=False,numbers=True)
+          loop4(s=False,other=False,numbers=True,price=False)
           choice=raw_input('Choose an option:')
           if choice == "1":
             print '(*)Remove all'
@@ -2210,6 +2458,40 @@ while p==True:
                 print 'You don\'t have enough. Sorry :('
                 time.sleep(1.5)
             choice = ''
+        if choice == "3":
+          cheap=True
+          price_wood=1
+          price_dirt=1
+          price_water=1
+          price_rocks=1
+          price_clay=1
+          price_bowl=1
+          price_sticks=1
+          price_pickaxe=1
+          price_shovel=1
+          price_axe=1
+          price_coal=1
+          price_iron=1
+          price_gold=1
+          price_diamond=1
+          price_copper=1
+          price_lapiz=1
+          buy_price_wood=1
+          buy_price_dirt=1
+          buy_price_water=1
+          buy_price_rocks=1
+          buy_price_clay=1
+          buy_price_bowl=1
+          buy_price_sticks=1
+          buy_price_pickaxe=1
+          buy_price_shovel=1
+          buy_price_axe=1
+          buy_price_coal=1
+          buy_price_iron=1
+          buy_price_gold=1
+          buy_price_diamond=1
+          buy_price_copper=1
+          buy_price_lapiz=1
         choice = ''
   if choice == "Dev_var":
     if dev==True:
