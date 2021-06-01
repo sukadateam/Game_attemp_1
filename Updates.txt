@@ -1,22 +1,28 @@
 User updates in this version.
-1. Added auto repeat option for gather.
-2. You can now buy more storage for inventory and home. You cannot sell. I will implement that feature at the current moment.
-3. Uppercased some letters on inventory def, under storage tab.
-4. Added a updates function for players.
-5. Uppercased some letters on home screen.
-6. Sleep displays a message when using dev mode.
-7. Little tweak to save function.
-8. Added quest3, quest4, quest5, and quest6 to Dev_var function.
-9. Little tweak to Exercise lyrics.
-10. Exercise now checks for stanima. Stanima check is disabled with dev mode.
-11. Added quest5 and quest6 to quests.
-12. Added a cheat_code in vars.py. You can unlock cheat codes by playing quests.
-13. Tweaked storage.
+1. Fixed bug where gather resources will think your inventory is full.
+2. Added a "Everything is cheap" option in Dev_menu()
+3. Removed message on screen to use tips at menu selection if new player.
+4. Added goodies to storage. For somereason my mind gapped and didn't add this.
+5. Updated save function to support new features.
+6. Fixed Dev_menu().
+7. Added stuff in Cheat codes
+8. Added save function
+9. Letters are now lowercased automatically in cheat_code var
+10. You can see your cheat codes in inventory.
+11. Inventory now has a list of option inside of it. These include storage, leave, and cheats.
+12. Added a donate function. Every 15 cents donated will reward you. You can claim it with the claim option inside of donate.
 
-Adding in next update.
-1. Show exchange of each item on sell.
-3. Add zinc and cobalt to mining, sell, buy, inventory for end of version 0.1.6.
-4. Add copper and lapiz to storage.
+Update 0.1.7
+1. Add zinc and cobalt to mining, sell, buy.
+2. Change Qty on goodies to lbs.
+3. Add option to not display error messages.
+4. Add more error messages. Allows app to run when error is encoutered.
+5. Change money to cents.
+6. Test all functions for errors and spelling.
+7. Add more donation rewards.
+8. Add 4 more quests that reward cheat codes.
+9. Require cheat__int check in start of program for cheat codes.
+10. Add option to leave loop on gather resources.
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
@@ -26,8 +32,8 @@ Future updates.
 5. Home. Maybe allow people to move their home. Time to move: 30 secs.
 6. Mining, sell, buy, inventory. Add zinc, cobalt, lead, mica, and manganese.
 7. Crafting Menu. Come up with new ideas.
-8. Donation function. Gives rewards for every 15 money donated.
-9. Show donated_money in inventory, under stats.
+8. Change money to cents on all functions
+9. Show exchange of each item on sell.
 
 Unknown updated: #Might do. Not sure right now.
 1. Different strength tools or upgrable tools.
