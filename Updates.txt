@@ -1,28 +1,30 @@
 User updates in this version.
-1. Fixed bug where gather resources will think your inventory is full.
-2. Added a "Everything is cheap" option in Dev_menu()
-3. Removed message on screen to use tips at menu selection if new player.
-4. Added goodies to storage. For somereason my mind gapped and didn't add this.
-5. Updated save function to support new features.
-6. Fixed Dev_menu().
-7. Added stuff in Cheat codes
-8. Added save function
-9. Letters are now lowercased automatically in cheat_code var
-10. You can see your cheat codes in inventory.
-11. Inventory now has a list of option inside of it. These include storage, leave, and cheats.
-12. Added a donate function. Every 15 cents donated will reward you. You can claim it with the claim option inside of donate.
+1. Changed look of Gather Resources
+2. Fixed Gather resource loop in settings function.
+3. Edited amounts gathered on Gather Resources.
+4. Fixed time.sleep() on Go Back Home.
+5. Exersice mountian is now closer to home on Change Location.
+6. Change Location with dev now doesn't show if max_stanima is to low.
+7. Mining now shows correct Est: for seconds.
+8. Using cheat codes now check if it's unlocked.
+9. Using cheat codes now decreases cheat code uses.
+10. You now need money to buy cheat codes.
+11. Using cheat codes now works properly.
+12. Added hints setting to settings.
+13. Updated updates function.
 
-Update 0.1.7
-1. Add zinc and cobalt to mining, sell, buy.
-2. Change Qty on goodies to lbs.
-3. Add option to not display error messages.
-4. Add more error messages. Allows app to run when error is encoutered.
-5. Change money to cents.
-6. Test all functions for errors and spelling.
-7. Add more donation rewards.
-8. Add 4 more quests that reward cheat codes.
-9. Require cheat__int check in start of program for cheat codes.
-10. Add option to leave loop on gather resources.
+Update 0.1.8
+1. Add new items to tips function.
+2. If user enter "" on a function do not display move_on. Just leave the function.
+3. In inventory add option to show completed quests.
+4. Add 5 more donation rewards. Rewards are cheat_codes.
+5. Add 2 more quests.
+6. Balance out prices and starting loot.
+7. Allow user to type number or name of function on main menu.
+8. Update tips function.
+9. Allow loop on tips. Will not allow custom loop amount.
+10. Add exit option for loop on tips.
+11. Add some hints in the game.
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
