@@ -2,13 +2,8 @@
 This is the first game I'm uploading.
 The developer of this game is Brandon Robinson.
 
-The Updates.txt file is for updates.
-
-The main.py file is the game file.
-
-The vars.py file is for storing all the vars.
-(And I know, I don't need to do that, It's just to keep it clean "Somewhat.")
-
+This page gets updated every time I release a Test Version 1. To get more updates check out my Surnia_dev page.
 
 Current Version: 0.1.7, Test 3
 Updated: 06/07/21
+Next update coming soon. Next version is 0.1.9 Test 1.
