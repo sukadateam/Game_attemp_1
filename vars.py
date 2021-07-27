@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Materials
 wood=10 #logs
 water=10 #oz
@@ -8,44 +9,48 @@ clay=10 #lbs
 bowl=10 #Qty
 sticks=10 #Qty
 #Goodies
-coal=0
-iron=0
-gold=0
-diamond=0
-copper=0
-lapiz=0
-zinc=0
-cobalt=0
+coal=1
+iron=1
+gold=1
+diamond=1
+copper=1
+lapiz=1
+zinc=1
+cobalt=1
+mica=1
+manganese=1
 #Home storage vars
-storage_wood=0
-storage_water=0
-storage_dirt=0
-storage_rocks=0
-storage_clay=0
-storage_bowl=0
-storage_sticks=0
-storage_pickaxe=0
-storage_shovel=0
-storage_axe=0
-storage_coal=0
-storage_iron=0
-storage_gold=0
-storage_diamond=0
-storage_copper=0
-storage_lapiz=0
-storage_zinc=0
-storage_cobalt=0
+storage_wood=5
+storage_water=5
+storage_dirt=5
+storage_rocks=5
+storage_clay=5
+storage_bowl=5
+storage_sticks=5
+storage_pickaxe=5
+storage_shovel=5
+storage_axe=5
+storage_coal=2
+storage_iron=2
+storage_gold=2
+storage_diamond=2
+storage_copper=2
+storage_lapiz=2
+storage_zinc=2
+storage_cobalt=2
+storage_mica=2
+storage_manganese=2
 #Storage
-self_storage=200 #Qty of items
+self_storage=300 #Qty of items
 home_storage=500 #Qty of items
 #Tools
-pickaxe=3 #Qty, Can be used 1 time
+pickaxe=5 #Qty, Can be used 1 time
 shovel=2 #Qty, Can be used 1 time
 axe=3 #Qty, Can be used 1 time
 #Cords
-lake1_cords=[27, 0, 69]
-lake2_cords=[27, 0, 103]
-lake3_cords=[27, 0, 409]
+lake1_cords=[27,0,69]
+lake2_cords=[27,0,103]
+lake3_cords=[27,0,409]
 river1_cords=[10, 0, 32]
 river2_cords=[10, 0, 210]
 river3_cords=[10, 0, 122]
@@ -61,7 +66,7 @@ city3_cords=[245, 0, 478]
 forest1_cords=[34, 5, 23]
 forest2_cords=[34, 5, 78]
 forest3_cords=[34, 5, 103]
-exercise_mountian1_cords=[45, 50, 0]
+exercise_mountian1_cords=[378, 207, 300]
 #Locations
 home_location=[0, 0, 0]
 current_location=[0, 0, 0]
@@ -73,13 +78,17 @@ sand_biomes=['desert #1','desert #2','desert #3','abandoned city','city #1','cit
 dirt_biomes=['forest #1','forest #2','forest #3']
 #Others
 sides=False
-money=25
+money=125 #Default 125
 stanima=100 #Starting Max 100, Default 100
-max_stanima=130 #Default 130
-exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
+max_stanima=100 #Default 100
+exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']
 donated_money=0
-donated_tf=[0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+go_home=['help','leave','break']
+repeat_amount=25
+chars_in_line=55
 #Quests
+quest_count=12
 quest1=False #False=Not done
 quest2=False #True=Done
 quest3=False
@@ -88,6 +97,10 @@ quest5=False
 quest6=False
 quest7=False
 quest8=False
+quest9=False
+quest10=False
+quest11=False
+quest12=False
 #Uses on cheat codes
 cheat_wood_int=0
 cheat_dirt_int=0
@@ -104,12 +117,18 @@ cheat_all=False
 error_message=True
 version=True
 gather_loop=True
-
+hints_loop=True
+hints=True
+create_new_save=True
+quick_leave=True
+hit_to_exit=False
+normal_clear=False
+run_off=True
 #Though all cords = distance
 #Lake = 27,0,?
 #River = 10,0,?
 #Clay mountian = 103,?,?
-#Exercise mountian = 45,50,?
+#Exercise mountian = 378,207,?
 #Desert = 521,10,?
 #Abandoned city = 245,0,?
 #Forest = 34,5,?
@@ -133,6 +152,8 @@ price_copper=2
 price_lapiz=3
 price_zinc=3
 price_cobalt=4
+price_mica=4
+price_manganese=5
 
 #Buy prices
 buy_price_wood=3
@@ -153,8 +174,10 @@ buy_price_copper=5
 buy_price_lapiz=6
 buy_price_zinc=5
 buy_price_cobalt=6
+buy_price_mica=6
+buy_price_manganese=7
 
 # --- CODES IN GAME ---
 dev_options='W3rS3cur3' #In the main menu enter this to activate.
 cheat_code=""
-cheat_amount=10#The amount to add when using cheat code. #MAX IS 25 items
+cheat_amount=10 #The amount to add when using cheat code. #MAX IS 25 items
