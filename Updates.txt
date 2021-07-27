@@ -1,30 +1,70 @@
 User updates in this version.
-1. Changed look of Gather Resources
-2. Fixed Gather resource loop in settings function.
-3. Edited amounts gathered on Gather Resources.
-4. Fixed time.sleep() on Go Back Home.
-5. Exersice mountian is now closer to home on Change Location.
-6. Change Location with dev now doesn't show if max_stanima is to low.
-7. Mining now shows correct Est: for seconds.
-8. Using cheat codes now check if it's unlocked.
-9. Using cheat codes now decreases cheat code uses.
-10. You now need money to buy cheat codes.
-11. Using cheat codes now works properly.
-12. Added hints setting to settings.
-13. Updated updates function.
+1. Vars.py file has been changed to variables.py so it doesn't conflict with a python built-in variable called (vars).
+2. Variables.py now declares encoding.
+3. Save function will now add the variable(hints) to a save file.
+4. Gather Resources now says dirt instead of dir when showing a list of options.
+5. Gather Resources now doesn't say "Hit enter to exit" when you choose exit as an option.
+6. Gather Resources can now use quick leave in the list of options. Use by hitting enter with nothing typed.
+7. Change Location will no longer give a TypeError when attempting to use function.
+8. Changed the way the look of text appears on Crafting Menu.
+9. Crafting Menu now adds () to s, after you craft an item. Ex: stick(s).
+10. Sleep will no longer say "sleeping..." if it says "You are not tired".
+11. Sleep now shows your stanima before you sleep.
+12. Sleep now has a hint. To turn it off change it in settings.
+13. Tips now uses the hints setting. To turn it off change it in settings.
+14. It is now much easier to change your current file location. Just change the (path) var.
+15. Exercise will no longer say "You need to travel to exersice mountian to use this function." if you are in dev mode.
+16. You can now only sleep if you are 20 or more stanima below max.
+17. Fixed a bug where you couldn't sell any bowls.
+18. Did a bunch of tweaking to mining.
+19. Buy will now show you how much money you have while it displays the items you can buy.
+20. Storage in inventory is now updated with the mica and manganese.
+21. Set_quest var in vars_beta now changes all of the quest vars to True/False.
+22. Edited the look of cheat codes function.
+23. Updates will now hint to the user to check updates.txt for more info. If hints are enabled.
 
-Update 0.1.8
-1. Add new items to tips function.
-2. If user enter "" on a function do not display move_on. Just leave the function.
-3. In inventory add option to show completed quests.
-4. Add 5 more donation rewards. Rewards are cheat_codes.
-5. Add 2 more quests.
-6. Balance out prices and starting loot.
-7. Allow user to type number or name of function on main menu.
-8. Update tips function.
-9. Allow loop on tips. Will not allow custom loop amount.
-10. Add exit option for loop on tips.
-11. Add some hints in the game.
+update 0.1.9 Test 1:
+1. Test most of the functions of the game.
+
+update 0.1.9 Test 2:
+1. User can leave a function anytime by typing one of these. go_home=['help','leave','break']
+2. Add setting to show dev tools in tips. Also add items for dev tools in tips.
+3. Allow user to change more than one setting at a time. For easier use.
+4. Possibly change tips to hints. Maybe.
+5. Add screen_runoff to sleep and tips functions.
+6. Add a miscellaneous settings page for small detailed settings.
+7. Add a misc setting to put a space between the typing section and the text on inputs. Keep them spaces out.
+
+update 0.1.9 Test 3:
+1. Add 4 more quests.
+2. Add more donation rewards.
+3. Add feature where, In dev mode you don't need items to craft. You can just make them. Hint: Game should not do item checks if dev==True.
+4. Add screen_runoff to exercise and partially sell.
+5. Add mica and manganese to mining.
+
+update 0.1.9 Test 4:
+1. Add more future quests to game.info file.
+2. Check to make sure all functions are working properly.
+3. Make sure save file and function is up to date.
+4. Any last minute changes.
+
+update 0.1.9 Test 5:
+1. Test settings.
+2. Test save.
+3. Test help.
+4. Test inventory/cheats.
+5. Test Dev_menu().
+6. Test Dev_var().
+7. Test Vars_beta().
+
+update 0.2.0:
+1. Convert code from python2 to python3. Maybe.
+2. Add more materials in the game. Possibly: Nails, screws, bolts. So, Building stuff.
+
+Non update info. But is important:
+1. When creating a save file, the file will be created at your users\your user folder. The game finds it here to.
+2. You will have to manually enter your vars.py location. Change the save var.
+3. You will have to manually enter your vars_beta.py location. Not necessary.
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
